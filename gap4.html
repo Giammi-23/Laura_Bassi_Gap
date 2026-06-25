@@ -1,11 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gap 4 | Laura Bassi Wikidata</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav>
         <div class="nav-container">
@@ -35,31 +37,72 @@
 
     <main class="narrow">
         <h1>Gap 4</h1>
-        <p>Esempi pratici di query semantiche per estrarre informazioni strutturate direttamente da Wikidata.</p>
+        <p>Questo gap è relativo alle specializzazioni e alle attività professionali che Laura ha svolto nel corso della
+            sua carriera accademica.
+            Per la nostra esplorazione ci siamo concentrati su due proprietà: "field of work" e "occupation". </p>
 
         <div class="query-box">
-            <h2>1. Co-allievi e docenti correlati</h2>
-            <p>Questa query seleziona tutte le personalità accademiche collegate direttamente o indirettamente all'attività di Laura Bassi a Bologna.</p>
-            
+            <h2>Prima query: "field of work" di Laura Bassi</h2>
+            <p>Questa query serve a mappare cosa dice attualmente Wikidata sulle specializzazioni associate a Laura
+                Bassi.</p>
+
             <div class="code-container">
-<pre><code>SELECT ?collega ?collegaLabel WHERE {
-  wd:Q105968 wdt:P101 ?field .       # Campo di attività di Laura Bassi
-  ?collega wdt:P101 ?field ;          # Colleghi nello stesso campo
-           wdt:P108 wd:Q42337 .       # Affiliati all'Università di Bologna
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],it,en". }
+                <pre><code>SELECT DISTINCT ?field ?fieldLabel WHERE {
+
+wd:Q541652 p:P101 ?statement .
+  ?statement ps:P101 ?field .
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
 }
-LIMIT 20</code></pre>
+</code></pre>
             </div>
             <div class="query-action">
-                <a href="https://query.wikidata.org/" target="_blank">Esegui Query Service ↗</a>
+                <a href="RisultatiQueryHTML/risultatoQuery7_fieldOfWork.html" class="action-btn-left">
+                    ← Vedi Risultati Salvati
+                </a>
+                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
+                    Esegui Query Service ↗
+                </a>
             </div>
         </div>
+        <p>In base ai dati strutturati di Wikidata, Laura Bassi ha lavorato nel settore dell'anatomia, della fisica e
+            della biologia.
+            Tuttavia, in base alle fonti bibliografiche il "field of work" non si limita a queste discipline.
+        </p>
+
+        <div class="query-box">
+            <h2>Seconda query: "occupation" di Laura Bassi</h2>
+            <p>Questa query serve a mappare cosa dice attualmente Wikidata sulle professioni svolte da Laura Bassi.</p>
+
+            <div class="code-container">
+                <pre><code>SELECT DISTINCT ?occupation ?occupationLabel WHERE {
+  
+  wd:Q541652 wdt:P106 ?occupation .
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
+}
+</code></pre>
+            </div>
+            <div class="query-action">
+                <a href="RisultatiQueryHTML\risultatoQuery8_Occupation.html" class="action-btn-left">
+                    ← Vedi Risultati Salvati
+                </a>
+                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
+                    Esegui Query Service ↗
+                </a>
+            </div>
+        </div>
+        <p>In un periodo della sua vita, Laura è stata professoressa di filosofia ma questa informazione nel risulta nella nostra analisi precedente. 
+            Infatti, tra le discipline accademiche non risulta la filosofia.
+        </p>
     </main>
 
     <footer>
+        </main>
         <div class="container">
             <p class="title">Progetto Linked Open Data — Laura Bassi</p>
         </div>
     </footer>
 </body>
+
 </html>
