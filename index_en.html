@@ -1,97 +1,74 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laura Bassi | Wikidata Project</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#faf8f5] text-[#2c2a29] min-h-screen flex flex-col justify-between">
-
-    <!-- Navigazione -->
-    <nav class="border-b border-[#e6e1da] bg-white/80 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="index.html" class="serif text-xl font-bold tracking-wide text-[#1c1b1a]">Laura Bassi <span class="text-amber-700">.</span></a>
-            <div class="flex items-center space-x-8 text-sm font-medium tracking-wide text-[#615e5a]">
-                <a href="index_en.html" class="text-amber-800 font-semibold border-b-2 border-amber-700 pb-1">Home</a>
-                <a href="project_en.html" class="hover:text-amber-800 transition">The Project</a>
-                <a href="sparql_en.html" class="hover:text-amber-800 transition">SPARQL Queries</a>
-                <div class="h-4 w-px bg-[#e6e1da]"></div>
-                <div class="flex space-x-2 text-xs uppercase font-bold">
-                    <span class="text-amber-800">IT</span>
-                    <a href="index_en.html" class="text-[#a8a29e] hover:text-amber-800 transition">EN</a>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index_en.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index_en.html" class="active">Home</a>
+                <a href="project_en.html">The Project</a>
+                <a href="sparql_en.html">SPARQL Queries</a>
+                <div class="divider"></div>
+                <div class="lang-switch">
+                    <a href="index.html">IT</a>
+                    <span class="active-lang">EN</span>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <header class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
-        <span class="text-xs uppercase font-bold tracking-widest text-amber-700 mb-3 block">A Scientific Legacy in Linked Open Data</span>
-        <h1 class="text-4xl md:text-6xl font-normal text-[#1c1b1a] leading-tight max-w-3xl mx-auto">
-            Mapping the Life of <span class="italic font-semibold text-amber-900">Laura Bassi</span> on Wikidata
-        </h1>
-        <p class="mt-6 text-base md:text-lg text-[#615e5a] max-w-xl mx-auto leading-relaxed font-light">
-            The first woman in the world to secure an official university chair. This project reorganizes, enriches, and reconnects data tied to her historical figure (Q105968).
-        </p>
-        <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
-            <a href="project.html" class="w-full sm:w-auto bg-[#1c1b1a] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-amber-900 transition shadow-sm">
-                Explore the Project
-            </a>
-            <a href="https://www.wikidata.org/wiki/Q105968" target="_blank" class="w-full sm:w-auto border border-[#c4be00]/0 bg-white border-[#e6e1da] text-[#1c1b1a] px-8 py-3 rounded-full text-sm font-medium hover:bg-[#f5f1eb] transition">
-                Wikidata Item ↗
-            </a>
+    <header>
+        <span class="eyebrow">A Scientific Legacy in Linked Open Data</span>
+        <h1>Mapping the Life of <span>Laura Bassi</span> on Wikidata</h1>
+        <p>The first woman in the world to secure an official university chair. This project reorganizes, enriches, and reconnects data tied to her historical figure (Q105968).</p>
+        <div class="cta-buttons">
+            <a href="project_en.html" class="btn-primary">Explore the Project</a>
+            <a href="https://www.wikidata.org/wiki/Q105968" target="_blank" class="btn-secondary">Wikidata Item ↗</a>
         </div>
     </header>
 
-    <!-- Introduzione Breve -->
-    <main class="max-w-5xl mx-auto px-6 pb-24 w-full">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-12 border-t border-[#e6e1da]">
-            <div>
-                <h2 class="text-3xl font-normal text-[#1c1b1a] mb-6">The Profile of a Pioneer</h2>
-                <p class="text-[#615e5a] leading-relaxed mb-4 font-light">
-                    Laura Bassi (Bologna, 1711 – 1778) was an Italian physicist, among the most critical intellectual figures of 18th-century Europe. She was the second woman to receive a degree in Europe and the first to officially teach at a university.
-                </p>
-                <p class="text-[#615e5a] leading-relaxed font-light">
-                    Attraverso la modellazione semantica dei dati su Wikidata, l'obiettivo è rendere navigabili le sue relazioni accademiche, la rete di corrispondenza e i luoghi della sua attività scientifica a Bologna.
-                </p>
+    <main class="wide">
+        <div class="grid-2">
+            <div class="text-content">
+                <h2>The Profile of a Pioneer</h2>
+                <p>Laura Bassi (Bologna, 1711 - 1778) was an Italian physicist, among the most critical intellectual figures of 18th-century Europe. She was the second woman to receive a degree in Europe and the first to officially teach at a university.</p>
+                <p>Through semantic data modeling on Wikidata, the goal is to make her academic relationships, correspondence network, and the locations of her scientific activity in Bologna fully navigable.</p>
             </div>
-            <div class="bg-white p-8 rounded-2xl border border-[#e6e1da] shadow-sm">
-                <h3 class="serif text-xl font-bold text-[#1c1b1a] mb-4">Key Metadata (Wikidata)</h3>
-                <dl class="space-y-3 text-sm">
-                    <div class="flex justify-between py-2 border-b border-[#f5f1eb]">
-                        <dt class="font-medium text-[#8c857b]">Full name</dt>
-                        <dd class="text-right text-[#1c1b1a]">Laura Maria Caterina Bassi Veratti</dd>
+            <div class="card">
+                <h3 class="serif">Key Metadata (Wikidata)</h3>
+                <dl>
+                    <div class="dl-row">
+                        <dt>Full name</dt>
+                        <dd>Laura Maria Caterina Bassi Veratti</dd>
                     </div>
-                    <div class="flex justify-between py-2 border-b border-[#f5f1eb]">
-                        <dt class="font-medium text-[#8c857b]">Identifier</dt>
-                        <dd class="font-mono text-amber-700">Q105968</dd>
+                    <div class="dl-row">
+                        <dt>Identifier</dt>
+                        <dd class="mono">Q105968</dd>
                     </div>
-                    <div class="flex justify-between py-2 border-b border-[#f5f1eb]">
-                        <dt class="font-medium text-[#8c857b]">Institution</dt>
-                        <dd class="text-right text-[#1c1b1a]">University of Bologna</dd>
+                    <div class="dl-row">
+                        <dt>Institution</dt>
+                        <dd>University of Bologna</dd>
                     </div>
-                    <div class="flex justify-between py-2">
-                        <dt class="font-medium text-[#8c857b]">Fields of activity</dt>
-                        <dd class="text-right text-[#1c1b1a]">Experimental physics, Natural philosophy</dd>
+                    <div class="dl-row">
+                        <dt>Fields of activity</dt>
+                        <dd>Experimental physics, Natural philosophy</dd>
                     </div>
                 </dl>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-white border-t border-[#e6e1da] py-12 text-center text-xs tracking-wide text-[#8c857b]">
-        <div class="max-w-5xl mx-auto px-6">
-            <p class="font-medium text-[#615e5a]">Linked Open Data Project — Laura Bassi</p>
-            <p class="mt-2 font-light">Created for scientific dissemination and open data purposes. Dataset released under CC0 Public Domain.</p>
+    <footer>
+        <div class="container">
+            <p class="title">Linked Open Data Project — Laura Bassi</p>
+            <p class="desc">Created for scientific dissemination and open data purposes. Dataset released under CC0 Public Domain.</p>
         </div>
     </footer>
-
 </body>
 </html>

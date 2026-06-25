@@ -1,75 +1,67 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Il Progetto | Laura Bassi Wikidata</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#faf8f5] text-[#2c2a29] min-h-screen flex flex-col justify-between">
-
-    <nav class="border-b border-[#e6e1da] bg-white/80 backdrop-blur sticky top-0 z-50">
-        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-            <a href="index.html" class="serif text-xl font-bold tracking-wide text-[#1c1b1a]">Laura Bassi <span class="text-amber-700">.</span></a>
-            <div class="flex items-center space-x-8 text-sm font-medium tracking-wide text-[#615e5a]">
-                <a href="index.html" class="hover:text-amber-800 transition">Home</a>
-                <a href="project.html" class="text-amber-800 font-semibold border-b-2 border-amber-700 pb-1">Il Progetto</a>
-                <a href="sparql.html" class="hover:text-amber-800 transition">Query SPARQL</a>
-                <div class="h-4 w-px bg-[#e6e1da]"></div>
-                <div class="flex space-x-2 text-xs uppercase font-bold">
-                    <span class="text-amber-800">IT</span>
-                    <a href="project_en.html" class="text-[#a8a29e] hover:text-amber-800 transition">EN</a>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="project.html" class="active">Il Progetto</a>
+                <a href="sparql.html">Query SPARQL</a>
+                <div class="divider"></div>
+                <div class="lang-switch">
+                    <span class="active-lang">IT</span>
+                    <a href="project_en.html">EN</a>
                 </div>
             </div>
         </div>
     </nav>
 
-    <main class="max-w-3xl mx-auto px-6 py-16 w-full flex-grow">
-        <h1 class="text-4xl font-normal text-[#1c1b1a] mb-4">Struttura del Progetto</h1>
-        <p class="text-lg text-[#615e5a] font-light mb-12">Obiettivi di mappatura, entità collegate e stato di avanzamento della ricerca sul Web Semantico.</p>
+    <main class="narrow">
+        <h1>Struttura del Progetto</h1>
+        <p>Obiettivi di mappatura, entità collegate e stato di avanzamento della ricerca sul Web Semantico.</p>
 
-        <!-- Obiettivi -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-normal text-[#1c1b1a] mb-4">Obiettivi Strategici</h2>
-            <ul class="space-y-4 text-[#615e5a] font-light list-disc list-inside">
-                <li><strong class="font-medium text-[#1c1b1a]">Rete Accademica:</strong> Collegare le relazioni con colleghi dell'Istituto delle Scienze (es. Lazzaro Spallanzani, Luigi Galvani).</li>
-                <li><strong class="font-medium text-[#1c1b1a]">Geolocalizzazione Storica:</strong> Mappare i luoghi della sua vita tramite coordinate precise (luogo di nascita, cattedra e il laboratorio domestico in via Barberia).</li>
-                <li><strong class="font-medium text-[#1c1b1a]">Produzione Scientifica:</strong> Inserire e strutturare gli identificativi bibliografici delle sue tesi e dissertazioni di fisica.</li>
+        <section>
+            <h2>Obiettivi Strategici</h2>
+            <ul class="styled-list">
+                <li><strong>Rete Accademica:</strong> Collegare le relazioni con colleghi dell'Istituto delle Scienze (es. Lazzaro Spallanzani, Luigi Galvani).</li>
+                <li><strong>Geolocalizzazione Storica:</strong> Mappare i luoghi della sua vita tramite coordinate precise (luogo di nascita, cattedra e il laboratorio domestico in via Barberia).</li>
+                <li><strong>Produzione Scientifica:</strong> Inserire e strutturare gli identificativi bibliografici delle sue tesi e dissertazioni di fisica.</li>
             </ul>
         </section>
 
-        <!-- Tabella Stato dei Lavori -->
-        <section class="mb-12">
-            <h2 class="text-2xl font-normal text-[#1c1b1a] mb-6">Tracciamento degli Item Wikidata</h2>
-            <div class="bg-white rounded-xl border border-[#e6e1da] overflow-hidden shadow-sm">
-                <table class="w-full text-left border-collapse text-sm">
+        <section>
+            <h2>Tracciamento degli Item Wikidata</h2>
+            <div class="table-container">
+                <table>
                     <thead>
-                        <tr class="bg-[#f5f1eb] text-[#615e5a] font-medium border-b border-[#e6e1da]">
-                            <th class="p-4">Entità</th>
-                            <th class="p-4">ID Wikidata</th>
-                            <th class="p-4 text-right">Stato</th>
+                        <tr>
+                            <th>Entità</th>
+                            <th>ID Wikidata</th>
+                            <th class="right">Stato</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-[#e6e1da] text-[#615e5a]">
+                    <tbody>
                         <tr>
-                            <td class="p-4 font-medium text-[#1c1b1a]">Laura Bassi</td>
-                            <td class="p-4 font-mono text-xs text-amber-800"><a href="https://www.wikidata.org/wiki/Q105968" target="_blank" class="hover:underline">Q105968</a></td>
-                            <td class="p-4 text-right"><span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-50 text-green-700">Ottimizzato</span></td>
+                            <td class="entity">Laura Bassi</td>
+                            <td><a href="https://www.wikidata.org/wiki/Q105968" target="_blank" class="mono">Q105968</a></td>
+                            <td class="right"><span class="badge green">Ottimizzato</span></td>
                         </tr>
                         <tr>
-                            <td class="p-4 font-medium text-[#1c1b1a]">Giuseppe Veratti (Marito)</td>
-                            <td class="p-4 font-mono text-xs text-amber-800"><a href="https://www.wikidata.org/wiki/Q12288856" target="_blank" class="hover:underline">Q12288856</a></td>
-                            <td class="p-4 text-right"><span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-50 text-yellow-700">In Corso</span></td>
+                            <td class="entity">Giuseppe Veratti (Marito)</td>
+                            <td><a href="https://www.wikidata.org/wiki/Q12288856" target="_blank" class="mono">Q12288856</a></td>
+                            <td class="right"><span class="badge yellow">In Corso</span></td>
                         </tr>
                         <tr>
-                            <td class="p-4 font-medium text-[#1c1b1a]">Dissertazioni di Fisica (1732)</td>
-                            <td class="p-4 font-mono text-xs text-amber-800">—</td>
-                            <td class="p-4 text-right"><span class="px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-50 text-red-700">Da Creare</span></td>
+                            <td class="entity">Dissertazioni di Fisica (1732)</td>
+                            <td class="mono">—</td>
+                            <td class="right"><span class="badge red">Da Creare</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -77,11 +69,10 @@
         </section>
     </main>
 
-    <footer class="bg-white border-t border-[#e6e1da] py-12 text-center text-xs tracking-wide text-[#8c857b]">
-        <div class="max-w-5xl mx-auto px-6">
-            <p class="font-medium text-[#615e5a]">Progetto Linked Open Data — Laura Bassi</p>
+    <footer>
+        <div class="container">
+            <p class="title">Progetto Linked Open Data — Laura Bassi</p>
         </div>
     </footer>
-
 </body>
 </html>
