@@ -508,19 +508,36 @@ pre code {
 
 .query-action {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between; /* Questo spinge un elemento a dx e uno a sx */
+    align-items: center;
+    margin-top: 16px;
 }
-
+ 
+/* Stile base condiviso per entrambi i link in fondo alla query */
 .query-action a {
     font-size: 0.75rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #b45309;
     transition: color 0.2s;
 }
-
-.query-action a:hover {
+ 
+/* Stile specifico per il bottone di Sinistra (I tuoi risultati) */
+.action-btn-left {
+    color: #615e5a; /* Un grigio neutro per differenziarlo */
+}
+ 
+.action-btn-left:hover {
+    color: #1c1b1a; /* Diventa più scuro al passaggio del mouse */
+    text-decoration: underline;
+}
+ 
+/* Stile specifico per il bottone di Destra (Wikidata) */
+.action-btn-right {
+    color: #b45309; /* Il color ambra originale */
+}
+ 
+.action-btn-right:hover {
     color: #451a03;
 }
 
