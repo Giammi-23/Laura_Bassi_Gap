@@ -277,7 +277,7 @@ main.wide {
     flex-grow: 1;
 }
 
-.grid-2 {
+.grid-3 {
     display: grid;
     grid-template-columns: 1fr;
     gap: 48px;
@@ -287,9 +287,15 @@ main.wide {
 }
 
 @media (min-width: 768px) {
-    .grid-2 {
-        grid-template-columns: repeat(2, 1fr);
+    .grid-3 {
+        grid-template-columns: 1fr 1.5fr 1fr;
     }
+}
+
+.portrait-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
 .text-content h2 {
