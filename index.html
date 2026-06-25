@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laura Bassi | Wikidata Project</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-[#faf8f5] text-[#2c2a29] min-h-screen flex flex-col justify-between">
+
+    <!-- Navigazione -->
+    <nav class="border-b border-[#e6e1da] bg-white/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="serif text-xl font-bold tracking-wide text-[#1c1b1a]">Laura Bassi <span class="text-amber-700">.</span></a>
+            <div class="flex items-center space-x-8 text-sm font-medium tracking-wide text-[#615e5a]">
+                <a href="index.html" class="text-amber-800 font-semibold border-b-2 border-amber-700 pb-1">Home</a>
+                <a href="project.html" class="hover:text-amber-800 transition">Il Progetto</a>
+                <a href="sparql.html" class="hover:text-amber-800 transition">Query SPARQL</a>
+                <div class="h-4 w-px bg-[#e6e1da]"></div>
+                <div class="flex space-x-2 text-xs uppercase font-bold">
+                    <span class="text-amber-800">IT</span>
+                    <a href="index_en.html" class="text-[#a8a29e] hover:text-amber-800 transition">EN</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="max-w-5xl mx-auto px-6 pt-20 pb-16 text-center">
+        <span class="text-xs uppercase font-bold tracking-widest text-amber-700 mb-3 block">Un'eredità scientifica in Linked Open Data</span>
+        <h1 class="text-4xl md:text-6xl font-normal text-[#1c1b1a] leading-tight max-w-3xl mx-auto">
+            Mappatura della vita di <span class="italic font-semibold text-amber-900">Laura Bassi</span> su Wikidata
+        </h1>
+        <p class="mt-6 text-base md:text-lg text-[#615e5a] max-w-xl mx-auto leading-relaxed font-light">
+            Prima donna al mondo a ottenere una cattedra universitaria ufficiale. Questo progetto riorganizza, arricchisce e interconnette i dati legati alla sua figura storica (Q105968).
+        </p>
+        <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
+            <a href="project.html" class="w-full sm:w-auto bg-[#1c1b1a] text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-amber-900 transition shadow-sm">
+                Esplora il progetto
+            </a>
+            <a href="https://www.wikidata.org/wiki/Q105968" target="_blank" class="w-full sm:w-auto border border-[#c4be00]/0 bg-white border-[#e6e1da] text-[#1c1b1a] px-8 py-3 rounded-full text-sm font-medium hover:bg-[#f5f1eb] transition">
+                Elemento Wikidata ↗
+            </a>
+        </div>
+    </header>
+
+    <!-- Introduzione Breve -->
+    <main class="max-w-5xl mx-auto px-6 pb-24 w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center py-12 border-t border-[#e6e1da]">
+            <div>
+                <h2 class="text-3xl font-normal text-[#1c1b1a] mb-6">La figura di una pioniera</h2>
+                <p class="text-[#615e5a] leading-relaxed mb-4 font-light">
+                    Laura Bassi (Bologna, 1711 – 1778) è stata una fisica italiana, tra le figure intellettuali più importanti del Settecento europeo. Fu la seconda donna a laurearsi in Europa e la prima a insegnare ufficialmente in un'università.
+                </p>
+                <p class="text-[#615e5a] leading-relaxed font-light">
+                    Attraverso la modellazione semantica dei dati su Wikidata, l'obiettivo è rendere navigabili le sue relazioni accademiche, la rete di corrispondenza e i luoghi della sua attività scientifica a Bologna.
+                </p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-[#e6e1da] shadow-sm">
+                <h3 class="serif text-xl font-bold text-[#1c1b1a] mb-4">Dati Principali (Wikidata)</h3>
+                <dl class="space-y-3 text-sm">
+                    <div class="flex justify-between py-2 border-b border-[#f5f1eb]">
+                        <dt class="font-medium text-[#8c857b]">Nome completo</dt>
+                        <dd class="text-right text-[#1c1b1a]">Laura Maria Caterina Bassi Veratti</dd>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-[#f5f1eb]">
+                        <dt class="font-medium text-[#8c857b]">Identificativo</dt>
+                        <dd class="font-mono text-amber-700">Q105968</dd>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-[#f5f1eb]">
+                        <dt class="font-medium text-[#8c857b]">Istituzione</dt>
+                        <dd class="text-right text-[#1c1b1a]">Università di Bologna</dd>
+                    </div>
+                    <div class="flex justify-between py-2">
+                        <dt class="font-medium text-[#8c857b]">Campi di attività</dt>
+                        <dd class="text-right text-[#1c1b1a]">Fisica sperimentale, Filosofia naturale</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-[#e6e1da] py-12 text-center text-xs tracking-wide text-[#8c857b]">
+        <div class="max-w-5xl mx-auto px-6">
+            <p class="font-medium text-[#615e5a]">Progetto Linked Open Data — Laura Bassi</p>
+            <p class="mt-2 font-light">Realizzato con finalità di divulgazione scientifica e open data. Dataset rilasciato in pubblico dominio (CC0).</p>
+        </div>
+    </footer>
+
+</body>
+</html>

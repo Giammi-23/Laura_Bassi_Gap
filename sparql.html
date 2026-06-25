@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query SPARQL | Laura Bassi Wikidata</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        h1, h2, h3, .serif { font-family: 'Playfair Display', serif; }
+    </style>
+</head>
+<body class="bg-[#faf8f5] text-[#2c2a29] min-h-screen flex flex-col justify-between">
+
+    <nav class="border-b border-[#e6e1da] bg-white/80 backdrop-blur sticky top-0 z-50">
+        <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+            <a href="index.html" class="serif text-xl font-bold tracking-wide text-[#1c1b1a]">Laura Bassi <span class="text-amber-700">.</span></a>
+            <div class="flex items-center space-x-8 text-sm font-medium tracking-wide text-[#615e5a]">
+                <a href="index.html" class="hover:text-amber-800 transition">Home</a>
+                <a href="project.html" class="hover:text-amber-800 transition">Il Progetto</a>
+                <a href="sparql.html" class="text-amber-800 font-semibold border-b-2 border-amber-700 pb-1">Query SPARQL</a>
+                <div class="h-4 w-px bg-[#e6e1da]"></div>
+                <div class="flex space-x-2 text-xs uppercase font-bold">
+                    <span class="text-amber-800">IT</span>
+                    <a href="sparql_en.html" class="text-[#a8a29e] hover:text-amber-800 transition">EN</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-3xl mx-auto px-6 py-16 w-full flex-grow">
+        <h1 class="text-4xl font-normal text-[#1c1b1a] mb-4">Interrogazioni SPARQL</h1>
+        <p class="text-lg text-[#615e5a] font-light mb-12">Esempi pratici di query semantiche per estrarre informazioni strutturate direttamente da Wikidata.</p>
+
+        <!-- Box Query 1 -->
+        <div class="bg-white rounded-2xl border border-[#e6e1da] p-6 shadow-sm mb-8">
+            <h2 class="text-xl font-normal text-[#1c1b1a] mb-2">1. Co-allievi e docenti correlati</h2>
+            <p class="text-sm text-[#615e5a] font-light mb-4">Questa query seleziona tutte le personalità accademiche collegate direttamente o indirettamente all'attività di Laura Bassi a Bologna.</p>
+            
+            <div class="bg-[#1c1b1a] rounded-xl p-4 overflow-x-auto text-xs font-mono text-[#e6e1da] leading-relaxed mb-4">
+<pre><code>SELECT ?collega ?collegaLabel WHERE {
+  wd:Q105968 wdt:P101 ?field .       # Campo di attività di Laura Bassi
+  ?collega wdt:P101 ?field ;          # Colleghi nello stesso campo
+           wdt:P108 wd:Q42337 .       # Affiliati all'Università di Bologna
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],it,en". }
+}
+LIMIT 20</code></pre>
+            </div>
+            <div class="flex justify-end">
+                <a href="https://query.wikidata.org/" target="_blank" class="text-xs font-medium uppercase tracking-wider text-amber-700 hover:text-amber-950 transition">
+                    Esegui Query Service ↗
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-[#e6e1da] py-12 text-center text-xs tracking-wide text-[#8c857b]">
+        <div class="max-w-5xl mx-auto px-6">
+            <p class="font-medium text-[#615e5a]">Progetto Linked Open Data — Laura Bassi</p>
+        </div>
+    </footer>
+
+</body>
+</html>
