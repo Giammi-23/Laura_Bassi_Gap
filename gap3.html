@@ -1,11 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gap 3 | Laura Bassi Wikidata</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav>
         <div class="nav-container">
@@ -34,27 +36,42 @@
     </nav>
 
     <main class="narrow">
-        <h1>Gap 3</h1>
-        <p>Esempi pratici di query semantiche per estrarre informazioni strutturate direttamente da Wikidata.</p>
+        <h1>Gap 3: Invisibilità dei legami</h1>
+        <p>Dalle fonti biografiche su Laura Bassi emerge una rete di relazioni scientifiche particolarmente
+            significativa. Bassi collaborò infatti con Giovanni Battista Beccaria nell'ambito degli studi sull'elettricità, fu
+            in contatto con Alessandro Volta e fu insegnante di Lazzaro Spallanzani, suo cugino.</p>
+        <p>Il nostro obiettivo è stato quindi di verificare se tali relazioni fossero rappresentate
+            correttamente all'interno del knowledge graph.</p>
 
         <div class="query-box">
-            <h2>1. Co-allievi e docenti correlati</h2>
-            <p>Questa query seleziona tutte le personalità accademiche collegate direttamente o indirettamente all'attività di Laura Bassi a Bologna.</p>
-            
+            <h2>1. Verifica delle relazioni accademiche</h2>
+            <p>L'unico risultato che otteniamo è la relazione “student” (P802) con Lazzaro Spallanzani, che risulta
+                quindi esseree correttamente modellato. Le altre relazioni invece, non appaiono mai!</p>
+
             <div class="code-container">
-<pre><code>SELECT ?collega ?collegaLabel WHERE {
-  wd:Q105968 wdt:P101 ?field .       # Campo di attività di Laura Bassi
-  ?collega wdt:P101 ?field ;          # Colleghi nello stesso campo
-           wdt:P108 wd:Q42337 .       # Affiliati all'Università di Bologna
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],it,en". }
+                <pre><code>SELECT ?person ?personLabel ?property ?propertyLabel WHERE {
+  VALUES ?person { wd:Q680 wd:Q223723 wd:Q213351}  # Volta, Beccaria, Spallanzani
+  
+  wd:Q541652 ?p ?person .
+  ?property wikibase:directClaim ?p .
+
+  SERVICE wikibase:label {
+    bd:serviceParam wikibase:language "it,en".
+  }
 }
-LIMIT 20</code></pre>
+</code></pre>
             </div>
             <div class="query-action">
-                <a href="https://query.wikidata.org/" target="_blank">Esegui Query Service ↗</a>
+                <a href="RisultatiQueryHTML/risultatoQuery6_Spallanzani.html" class="action-btn-left">
+                    ← Vedi Risultato Query
+                </a>
+                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
+                    Esegui Query Service ↗
+                </a>
             </div>
         </div>
     </main>
+
 
     <footer>
         <div class="container">
@@ -62,4 +79,5 @@ LIMIT 20</code></pre>
         </div>
     </footer>
 </body>
+
 </html>
