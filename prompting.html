@@ -49,111 +49,31 @@
     </nav>
 
     <main class="narrow">
-        <h1>Il Progetto: Dalla Diagnostica alla Conoscenza Strutturata</h1>
-        <p>Come si riflette il divario di genere nei database che governano il web semantico? Il nostro progetto parte
-            da questa domanda macro per indagare il <strong><b>gender gap</b></strong> nei knowledge graph. Abbiamo calato questa sfida nel
-            contesto storico <strong><b>delle docenti dell'Università di Bologna</b></strong>, eleggendo la figura di <strong><b><u>Laura Bassi</u></b></strong> a nucleo
-            centrale della nostra ricerca. Attraverso un audit diagnostico sul grafo di Wikidata, abbiamo misurato la
-            qualità e la ricchezza dei dati esistenti su queste scienziate, con l'obiettivo di far emergere le
-            incompletezze e trasformare la frammentazione della narrazione biografica in conoscenza strutturata, aperta
-            e quantificabile.</p>
+        <h1>Arricchimento Semantico tramite Large Language Models (LLM)</h1>
+        <p>In questa fase del progetto, abbiamo abbandonato la logica di SPARQL CONSTRUCT per delegare la generazione della nuova conoscenza ai <b><strong><span>Large Language Models</span></strong></b>. L'obiettivo è stato quello di agire come esperte di <b><strong>Prompt Engineering</strong></b> per istruire l'Intelligenza Artificiale ad estrarre informazioni dalle fonti biografiche e tradurle nel linguaggio formale del <b><strong>Web Semantico</strong></b>: il formato <b><strong>Turtle</strong></b>.</p>
 
-        <h2>Query Esplorative Preliminari</h2>
-        <p></p>
-        <div class="query-box">
-            <h3>Query 1: Censimento delle scienziate dell'Alma Mater Studiorum</h3>
-            <p>Prima di procedere all'arricchimento e verifica della qualità, abbiamo interrogato l'endpoint di Wikidata
-                per mappare la presenza delle docenti donne legate all'Università di Bologna. Questa query quindi ha lo
-                scopo di isolare una possibile entità di nostro interesse.</p>
+        <section>
+            <h2>Metodologia e Strategie di Prompting</h2>
+            <p>Per garantire l'accuratezza dei risultati, abbiamo applicato tre diverse tecniche di prompting, testando la capacità di ragionamento dei modelli su scenari di complessità crescente:</p>
+        
+            <ul class="styled-list">
+                <li><strong><span>Zero-Shot Prompting:</span></strong> Abbiamo fornito istruzioni dirette senza esempi, facendo affidamento sulla conoscenza pre-addestrata del modello riguardo l'ontologia di Wikidata;</li>
+                <li><strong><span>Few-Shot Prompting:</span></strong> Abbiamo guidato il modello fornendo da 2 a 5 esempi di input e output desiderato, stabilendo uno schema coerente per la generazione delle triple;</li>
+                <li><strong><span>Chain-of-Thought (CoT):</span></strong> Abbiamo incoraggiato il modello ad esplicitare il proprio ragionamento passo dopo passo (es. "Pensiamo passo dopo passo"), prima di produrre il codice finale. Questa tecnica si è rivelata fondamentale per risolvere ambiguità logiche tra occupazioni e campi di attività per esempio.</li>
+            </ul>
+        </section>
 
-            <div class="code-container">
-                <pre><code>SELECT DISTINCT ?person ?personLabel ?personDescription (COUNT(?prop) AS ?numProprietà)
-WHERE {
-  ?person wdt:P31 wd:Q5 ;         # essere umano
-          wdt:P21 wd:Q6581072 .   # genere: femminile
-  
-  {?person wdt:P108 wd:Q131262}     # datore di lavoro: UNIBO
-  
-  OPTIONAL { ?person ?prop ?value }
-  
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
-}
-GROUP BY ?person ?personLabel ?personDescription
-ORDER BY DESC(?numProprietà)
-LIMIT 100
-</code></pre>
-            </div>
-
-            <p>Abbiamo quindi estratto le entità essere umano, di genere femminile, che hanno come datore di lavoro
-                l'UNIBO, contando il numero di proprietà ad esse associate, limitando e ordinando i primi 100 risultati.
-            </p>
-
-            <div class="query-action">
-                <a href="RisultatiQueryHTML/risultatoQuery1_docentiUnibo.html" class="action-btn-left">
-                    ← Vedi Risultati Salvati
-                </a>
-                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
-                    Esegui Query Service ↗
-                </a>
-            </div>
-        </div>
-
-        <div class="query-box">
-            <h3>Query 2: Identificazione Del Soggetto Centrale - Laura Bassi</h3>
-            <p>Per iniziare il lavoro specifico, abbiamo individuato il nostro soggetto di studi: Laura Bassi. Abbiamo
-                quindi utilizzato una query di ricerca per l'etichetta <code>rdfs:label</code> in lingua italiana per
-                recuperare l'identificativo univoco <code>Q541652</code>.</p>
-
-            <div class="code-container">
-                <pre><code>SELECT DISTINCT ?person ?personLabel ?personDescription
-WHERE {
-  ?person rdfs:label "Laura Bassi"@it .
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
-}
-</code></pre>
-            </div>
-            <div class="query-action">
-                <a href="RisultatiQueryHTML/risultatoQuery2_LauraBassi.html" class="action-btn-left">
-                    ← Vedi Risultati Salvati
-                </a>
-                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
-                    Esegui Query Service ↗
-                </a>
-            </div>
-        </div>
-
-        <h2>I Quattro Gap Informativi Individuati</h2>
-        <p>Il confronto tra i dati strutturati di Wikidata e le fonti testuali (Wikipedia e Archivi Storici UniBo), ha
-            fatto emergere quattro lacune semantiche che il nostro progette intende colmare:</p>
+        <section>
+            <h2>Analisi Comparativa tra Modelli</h2>
+            <p>Il lavoro ha previsto un confronto tra diversi modelli linguistici, come <span><strong><b>GPT-4</b></strong></span>, <span><strong><b>Gemini</b></strong></span> e <span><strong><b>Claude</b></strong></span>. Questa analisi comparativa ci ha permesso di valutare:</p>
+        
+            <ul class="styled-list">
+                <li><strong><span>Qualità del codice Turtle:</span></strong> La correttezza sintattica e l'utilizzo dei prefissi corretti (<code>wd:</code>, <code>wdt:</code>);</li>
+                <li><strong><span>Precisione Semantica:</span></strong> La capacità di distinguere tra concetti di fatto abbastanza simili (es. la differenza tra "Occupazione" - <code>P106</code> e "Campo di lavoro" - <code>P101</code>);</li>
+                <li><strong><span>Allucinazioni:</span></strong> La tendenza dei modelli ad inventare identificativi QID o proprietà non esistenti, richiedendo una verifica manuale rigorosa sui risultati prodotti.</li>
+            </ul>
+        </section>
     </main>
-
-    <div class="grid-4">
-        <div class="card">
-            <h2>Gap 1: Status Istituzionale e Primato Storico</h2>
-            <p>Si analizza la mancanza di una proprietà esplicita (come <code>position held</code>) che certifichi il
-                ruolo di Laura Bassi come prima donna in Europa a ottenere una cattedra universitaria ufficiale,
-                informazione attualmente solo "implicita" nel grafo.</p>
-        </div>
-        <div class="card">
-            <h2>Gap 2: Premi, Riconoscimenti e Intitolazioni</h2>
-            <p>Ci si focalizza sulla modellazione incompleta delle numerose onorificenze e dediche (crateri, asteroidi,
-                navi e scuole) che, sebbene presenti nelle fonti biografiche, non risultano strutturate correttamente
-                nelle proprietà di Wikidata.</p>
-        </div>
-        <div class="card">
-            <h2>Gap 3: Invisibilità dei Legami (Mentorship e Network)</h2>
-            <p>Si esplora l'assenza di collegamenti strutturati tra Laura Bassi e la sua rete scientifica (come
-                Alessandro Volta), puntando a far emergere le relazioni di collaborazione e influenza reciproca spesso
-                invisibili nel grafo.</p>
-        </div>
-        <div class="card">
-            <h2>Gap 4: Campo di Attività e Specificità Professionale</h2>
-            <p>Si affronta la confusione semantica tra discipline generiche (fisica, biologia) e i ruoli professionali
-                specifici (ricercatrice vs professoressa), cercando di disambiguare come e in quali ambiti specifici la
-                scienziata abbia operato nelle diverse fasi della carriera.</p>
-        </div>
-    </div>
-
     <footer>
         <div class="container">
             <p class="title">Progetto Linked Open Data — Laura Bassi</p>
@@ -161,5 +81,4 @@ WHERE {
         </div>
     </footer>
 </body>
-
 </html>

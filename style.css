@@ -82,6 +82,10 @@ nav {
     color: #b45309;
 }
 
+span {
+    color: #b45309;
+}
+
 .nav-links {
     display: flex;
     align-items: center;
@@ -424,6 +428,7 @@ ul.styled-list {
 }
 
 ul.styled-list li {
+    margin-top: 20px;
     margin-bottom: 16px;
     line-height: 1.625;
 }
