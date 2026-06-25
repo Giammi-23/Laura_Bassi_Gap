@@ -42,6 +42,10 @@ h3,
     font-family: 'Playfair Display', serif;
 }
 
+p {
+    text-align: justify;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -327,6 +331,22 @@ main.wide {
     margin-bottom: 16px;
 }
 
+.grid-4 {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 colonna su mobile */
+    gap: 32px; 
+    align-items: start; /* IMPORTANTE: usa 'start' invece di 'center'. Se le schede hanno testi di lunghezze diverse, così partiranno tutte allineate in alto */
+    padding: 24px 48px;
+    border-top: 1px solid #e6e1da;
+}
+
+@media (min-width: 1024px) {
+    .grid-4 {
+        /* repeat(4, 1fr) è la scorciatoia pulita per scrivere: 1fr 1fr 1fr 1fr */
+        grid-template-columns: repeat(4, 1fr); 
+    }
+}
+
 .dl-row {
     display: flex;
     justify-content: space-between;
@@ -443,29 +463,6 @@ tr:last-child td {
 td.entity {
     font-weight: 500;
     color: #1c1b1a;
-}
-
-.badge {
-    padding: 4px 10px;
-    border-radius: 9999px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    display: inline-block;
-}
-
-.badge.green {
-    background: #f0fdf4;
-    color: #15803d;
-}
-
-.badge.yellow {
-    background: #fefce8;
-    color: #a16207;
-}
-
-.badge.red {
-    background: #fef2f2;
-    color: #b91c1c;
 }
 
 td.right,

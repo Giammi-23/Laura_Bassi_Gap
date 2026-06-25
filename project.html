@@ -1,11 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Il Progetto | Laura Bassi Wikidata</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav>
         <div class="nav-container">
@@ -13,8 +15,19 @@
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="project.html" class="active">Il Progetto</a>
-                <a href="sparql.html">Query SPARQL</a>
-                <div class="divider"></div>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Gap Identificati ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1.html">Gap 1</a>
+                            <a href="gap2.html">Gap 2</a>
+                            <a href="gap3.html">Gap 3</a>
+                            <a href="gap4.html">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider">
+                </div>
                 <div class="lang-switch">
                     <span class="active-lang">IT</span>
                     <a href="project_en.html">EN</a>
@@ -24,55 +37,106 @@
     </nav>
 
     <main class="narrow">
-        <h1>Struttura del Progetto</h1>
-        <p>Obiettivi di mappatura, entità collegate e stato di avanzamento della ricerca sul Web Semantico.</p>
+        <h1>Il Progetto: Metodologia e Diagnostica</h1>
+        <p>L'obiettivo del nostro lavoro è stato trasformare la narrazione biografica delle pioniere della scienza in
+            conoscenza strutturata. Il punto di partenza è stato un processo di audit e diagnostica sul grafo di
+            <strong><u><b>Wikidata</b></u></strong> per misurare la ricchezza e la qualità dei dati esistenti su queste
+            figure.</p>
 
-        <section>
-            <h2>Obiettivi Strategici</h2>
-            <ul class="styled-list">
-                <li><strong>Rete Accademica:</strong> Collegare le relazioni con colleghi dell'Istituto delle Scienze (es. Lazzaro Spallanzani, Luigi Galvani).</li>
-                <li><strong>Geolocalizzazione Storica:</strong> Mappare i luoghi della sua vita tramite coordinate precise (luogo di nascita, cattedra e il laboratorio domestico in via Barberia).</li>
-                <li><strong>Produzione Scientifica:</strong> Inserire e strutturare gli identificativi bibliografici delle sue tesi e dissertazioni di fisica.</li>
-            </ul>
-        </section>
+        <h2>Query Esplorative Preliminari</h2>
+        <p></p>
+        <div class="query-box">
+            <h3>Query 1: Censimento delle scienziate dell'Alma Mater Studiorum</h3>
+            <p>Prima di procedere all'arricchimento e verifica della qualità, abbiamo interrogato l'endpoint di Wikidata
+                per mappare la presenza delle docenti donne legate all'Università di Bologna. Questa query quindi ha lo
+                scopo di isolare una possibile entità di nostro interesse.</p>
 
-        <section>
-            <h2>Tracciamento degli Item Wikidata</h2>
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Entità</th>
-                            <th>ID Wikidata</th>
-                            <th class="right">Stato</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="entity">Laura Bassi</td>
-                            <td><a href="https://www.wikidata.org/wiki/Q105968" target="_blank" class="mono">Q105968</a></td>
-                            <td class="right"><span class="badge green">Ottimizzato</span></td>
-                        </tr>
-                        <tr>
-                            <td class="entity">Giuseppe Veratti (Marito)</td>
-                            <td><a href="https://www.wikidata.org/wiki/Q12288856" target="_blank" class="mono">Q12288856</a></td>
-                            <td class="right"><span class="badge yellow">In Corso</span></td>
-                        </tr>
-                        <tr>
-                            <td class="entity">Dissertazioni di Fisica (1732)</td>
-                            <td class="mono">—</td>
-                            <td class="right"><span class="badge red">Da Creare</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="code-container">
+                <pre><code>SELECT DISTINCT ?person ?personLabel ?personDescription (COUNT(?prop) AS ?numProprietà)
+WHERE {
+  ?person wdt:P31 wd:Q5 ;         # essere umano
+          wdt:P21 wd:Q6581072 .   # genere: femminile
+  
+  {?person wdt:P108 wd:Q131262}     # datore di lavoro: UNIBO
+  
+  OPTIONAL { ?person ?prop ?value }
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
+}
+GROUP BY ?person ?personLabel ?personDescription
+ORDER BY DESC(?numProprietà)
+LIMIT 100
+</code></pre>
             </div>
-        </section>
+
+            <p>Abbiamo quindi estratto le entità essere umano, di genere femminile, che hanno come datore di lavoro
+                l'UNIBO, contando il numero di proprietà ad esse associate, limitando e ordinando i primi 100 risultati.
+            </p>
+
+            <div class="query-action">
+                <a href="RisultatiQueryHTML/risultatoQuery1_docentiUnibo.html" class="action-btn-left">
+                    ← Vedi Risultati Salvati
+                </a>
+                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
+                    Esegui Query Service ↗
+                </a>
+            </div>
+        </div>
+
+        <div class="query-box">
+            <h3>Query 2: Identificazione Del Soggetto Centrale - Laura Bassi</h3>
+            <p>Per iniziare il lavoro specifico, abbiamo individuato il nostro soggetto di studi: Laura Bassi. Abbiamo
+                quindi utilizzato una query di ricerca per l'etichetta <code>rdfs:label</code> in lingua italiana per
+                recuperare l'identificativo univoco <code>Q541652</code>.</p>
+
+            <div class="code-container">
+                <pre><code>SELECT DISTINCT ?person ?personLabel ?personDescription
+WHERE {
+  ?person rdfs:label "Laura Bassi"@it .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
+}
+</code></pre>
+            </div>
+            <div class="query-action">
+                <a href="RisultatiQueryHTML/risultatoQuery1_docentiUnibo.html" class="action-btn-left">
+                    ← Vedi Risultati Salvati
+                </a>
+                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
+                    Esegui Query Service ↗
+                </a>
+            </div>
+        </div>
+
+        <h2>I Quattro Gap Informativi Individuati</h2>
+        <p>Il confronto tra i dati strutturati di Wikidata e le fonti testuali (Wikipedia e Archivi Storici UniBo), ha
+            fatto emergere quattro lacune semantiche che il nostro progette intende colmare:</p>
     </main>
+
+    <div class="grid-4">
+        <div class="card">
+            <h2>Gap 1: Status Istituzionale e Primato Storico</h2>
+            <p>Si analizza la mancanza di una proprietà esplicita (come <code>position held</code>) che certifichi il ruolo di Laura Bassi come prima donna in Europa a ottenere una cattedra universitaria ufficiale, informazione attualmente solo "implicita" nel grafo.</p>
+        </div>
+        <div class="card">
+            <h2>Gap 2: Premi, Riconoscimenti e Intitolazioni</h2>
+            <p>Ci si focalizza sulla modellazione incompleta delle numerose onorificenze e dediche (crateri, asteroidi, navi e scuole) che, sebbene presenti nelle fonti biografiche, non risultano strutturate correttamente nelle proprietà di Wikidata.</p>
+        </div>
+        <div class="card">
+            <h2>Gap 3: Invisibilità dei Legami (Mentorship e Network)</h2>
+            <p>Si esplora l'assenza di collegamenti strutturati tra Laura Bassi e la sua rete scientifica (come Alessandro Volta), puntando a far emergere le relazioni di collaborazione e influenza reciproca spesso invisibili nel grafo.</p>
+        </div>
+        <div class="card">
+            <h2>Gap 4: Campo di Attività e Specificità Professionale</h2>
+            <p>Si affronta la confusione semantica tra discipline generiche (fisica, biologia) e i ruoli professionali specifici (ricercatrice vs professoressa), cercando di disambiguare come e in quali ambiti specifici la scienziata abbia operato nelle diverse fasi della carriera.</p>
+        </div>
+    </div>
 
     <footer>
         <div class="container">
             <p class="title">Progetto Linked Open Data — Laura Bassi</p>
+            <p class="desc">© 2026 Anna Bonazza, Ludovica Villa, Gianmarco Rombaldoni. Tutti i diritti riservati.</p>
         </div>
     </footer>
 </body>
+
 </html>
