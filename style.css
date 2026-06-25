@@ -197,7 +197,7 @@ header h1 span {
 }
 
 header p {
-    margin-top: 24px;
+    margin-top: 16px;
     font-size: 1rem;
     color: #615e5a;
     max-width: 576px;
@@ -308,7 +308,7 @@ main.wide {
 .text-content p {
     color: #615e5a;
     font-weight: 300;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     line-height: 1.625;
 }
 
