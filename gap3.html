@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gap 3 | Laura Bassi Wikidata</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="project.html">Il Progetto</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Gap Identificati ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1.html">Gap 1</a>
+                            <a href="gap2.html">Gap 2</a>
+                            <a href="gap3.html">Gap 3</a>
+                            <a href="gap4.html">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="lang-switch">
+                    <span class="active-lang">IT</span>
+                    <a href="sparql_en.html">EN</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="narrow">
+        <h1>Gap 3</h1>
+        <p>Esempi pratici di query semantiche per estrarre informazioni strutturate direttamente da Wikidata.</p>
+
+        <div class="query-box">
+            <h2>1. Co-allievi e docenti correlati</h2>
+            <p>Questa query seleziona tutte le personalità accademiche collegate direttamente o indirettamente all'attività di Laura Bassi a Bologna.</p>
+            
+            <div class="code-container">
+<pre><code>SELECT ?collega ?collegaLabel WHERE {
+  wd:Q105968 wdt:P101 ?field .       # Campo di attività di Laura Bassi
+  ?collega wdt:P101 ?field ;          # Colleghi nello stesso campo
+           wdt:P108 wd:Q42337 .       # Affiliati all'Università di Bologna
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],it,en". }
+}
+LIMIT 20</code></pre>
+            </div>
+            <div class="query-action">
+                <a href="https://query.wikidata.org/" target="_blank">Esegui Query Service ↗</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="title">Progetto Linked Open Data — Laura Bassi</p>
+        </div>
+    </footer>
+</body>
+</html>

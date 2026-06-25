@@ -523,3 +523,48 @@ pre code {
 .query-action a:hover {
     color: #451a03;
 }
+
+/* Menu a tendina nell'header */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Il menu nascosto di default */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    min-width: 160px;
+    z-index: 100; /* Assicura che stia sopra tutto */
+    border-radius: 8px;
+    padding: 10px 0;
+    padding-top: 10px;
+}
+
+.dropdown-content-inner {
+    background-color: white;
+    border-radius: 8px;
+    border: 1px solid #e6e1da;
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    padding: 10px 0;
+}
+
+/* Ogni link nel menu */
+.dropdown-content a {
+    display: block;
+    padding: 8px 16px;
+    color: #615e5a;
+    font-size: 0.875rem;
+}
+
+/* Effetto al passaggio del mouse sul menu */
+.dropdown-content a:hover {
+    background-color: #faf8f5;
+    color: #92400e;
+}
+
+/* mostra il contenuto */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
