@@ -107,6 +107,13 @@ nav {
     padding-bottom: 4px;
 }
 
+.nav-links  .active .dropbtn{
+    color: #92400e;
+    font-weight: 600;
+    border-bottom: 2px solid #b45309;
+    padding-bottom: 4px;
+}
+
 .divider {
     height: 16px;
     width: 1px;
