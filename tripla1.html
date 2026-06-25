@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gap 4 | Laura Bassi Wikidata</title>
+    <title>Tripla 1 | Laura Bassi Wikidata</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -22,7 +22,7 @@
                             <a href="gap1.html">Gap 1</a>
                             <a href="gap2.html">Gap 2</a>
                             <a href="gap3.html">Gap 3</a>
-                            <a href="gap4.html" class="active">Gap 4</a>
+                            <a href="gap4.html">Gap 4</a>
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                     <a href="prompting.html" class="dropbtn">Tecniche Di Prompting ▾</a>
                     <div class="dropdown-content">
                         <div class="dropdown-content-inner">
-                            <a href="tripla1.html">Tripla Gap 1</a>
+                            <a href="tripla1.html" class="active">Tripla Gap 1</a>
                             <a href="tripla2.html">Tripla Gap 2</a>
                             <a href="tripla3.html">Tripla Gap 3</a>
                             <a href="tripla4.html">Tripla Gap 4</a>
@@ -42,72 +42,61 @@
                 </div>
                 <div class="lang-switch">
                     <span class="active-lang">IT</span>
-                    <a href="gap4_en.html">EN</a>
+                    <a href="tripla1_en.html">EN</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <main class="narrow">
-        <h1>Gap 4: carriera accademica</h1>
-        <p>Questo gap è relativo alle specializzazioni e alle attività professionali che Laura ha svolto nel corso della
-            sua carriera accademica.
-            Per la nostra esplorazione ci siamo concentrati su due proprietà: "field of work" e "occupation". </p>
+        <h1>Gap 1: Posizione accademica</h1>
+        <p>Laura Bassi fu la prima donna in Europa a ottenere una posizione accademica ufficiale in fisica
+            all'Università di Bologna. Su Wikidata, però, questo fatto non è modellato come proprietà esplicita ma è
+            solo “implicito” nella combinazione di:</p>
+        <ul class="styled-list">
+            <li> "occupazione" (P106) = physicist </li>
+            <li> "datore di lavoro" (P108) = University of Bologna </li>
+        </ul>
+        <p></p>
+        <p> Ma non è utilizzata la proprietà “position held” (P39), che sottolineerebbe la carica istituzionale che le è
+            stata assegnata tramite decreto, rafforzando il livello semantico del suo primato.</p>
+        <p>Il gap semantico è proprio questo: sebbene le fonti biografiche evidenzino il ruolo pionieristico di Laura
+            Bassi come prima donna in Europa a ricoprire una cattedra in fisica, tale informazione non è esplicitamente
+            modellata nel knowledge graph come relazione strutturata, ma rimane implicita nella combinazione di
+            occupazione e affiliazione accademica.
+        </p>
 
         <div class="query-box">
-            <h2>Prima query: "field of work" di Laura Bassi</h2>
-            <p>Questa query serve a mappare cosa dice attualmente Wikidata sulle specializzazioni associate a Laura
-                Bassi.</p>
+            <h2>1. "Occupation" vs. "Position held"</h2>
+            <p>Il primato storico di Laura Bassi non è modellato come carica istituzionale (P39 — assente), ma
+                semplicemente come occupazione. Abbiamo scoperto poi, l'esistenza di un elemento Q107609509 ("first
+                woman to hold a position") di tipo oggetto Wikidata, non una proprietà!
+                Questo rivela un gap non solo quantitativo (dato mancante) ma strutturale: Wikidata non dispone
+                attualmente di un vocabolario adeguato per rappresentare primati storici di questo tipo!
+            </p>
 
             <div class="code-container">
-                <pre><code>SELECT DISTINCT ?field ?fieldLabel WHERE {
-
-wd:Q541652 p:P101 ?statement .
-  ?statement ps:P101 ?field .
+                <pre><code>SELECT DISTINCT ?person ?personLabel ?occupation ?occupationLabel 
+                ?position ?positionLabel
+WHERE {
+  VALUES ?person { wd:Q541652 } # La variabile ?person è tassativamente Laura Bassi
+  
+  OPTIONAL { wd:Q541652 wdt:P106 ?occupation }     # occupation
+  OPTIONAL { wd:Q541652 wdt:P39 ?position }        # position held
   
   SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
 }
 </code></pre>
             </div>
             <div class="query-action">
-                <a href="RisultatiQueryHTML/risultatoQuery7_fieldOfWork.html" class="action-btn-left">
-                    ← Vedi Risultati Salvati
+                <a href="RisultatiQueryHTML/risultatoQuery3_Occ&Pos..html" class="action-btn-left">
+                    ← Vedi Risultato Query
                 </a>
                 <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
                     Esegui Query Service ↗
                 </a>
             </div>
         </div>
-        <p>In base ai dati strutturati di Wikidata, Laura Bassi ha lavorato nel settore dell'anatomia, della fisica e
-            della biologia.
-            Tuttavia, in base alle fonti bibliografiche il "field of work" non si limita a queste discipline.
-        </p>
-
-        <div class="query-box">
-            <h2>Seconda query: "occupation" di Laura Bassi</h2>
-            <p>Questa query serve a mappare cosa dice attualmente Wikidata sulle professioni svolte da Laura Bassi.</p>
-
-            <div class="code-container">
-                <pre><code>SELECT DISTINCT ?occupation ?occupationLabel WHERE {
-  
-  wd:Q541652 wdt:P106 ?occupation .
-  
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
-}
-</code></pre>
-            </div>
-            <div class="query-action">
-                <a href="RisultatiQueryHTML\risultatoQuery8_Occupation.html" class="action-btn-left">
-                    ← Vedi Risultati Salvati
-                </a>
-                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
-                    Esegui Query Service ↗
-                </a>
-            </div>
-        </div>
-        <p>In un periodo della sua vita, Laura è stata professoressa di filosofia ma questa informazione nel risulta nella nostra analisi precedente. 
-            Infatti, tra le discipline accademiche non risulta la filosofia.
-        </p>
     </main>
 
     <footer>

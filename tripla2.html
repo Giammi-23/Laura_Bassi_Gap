@@ -1,13 +1,11 @@
 <!DOCTYPE HTML>
 <html lang="it">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gap 4 | Laura Bassi Wikidata</title>
+    <title>Tripla 2 | Laura Bassi Wikidata</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
     <nav>
         <div class="nav-container">
@@ -22,7 +20,7 @@
                             <a href="gap1.html">Gap 1</a>
                             <a href="gap2.html">Gap 2</a>
                             <a href="gap3.html">Gap 3</a>
-                            <a href="gap4.html" class="active">Gap 4</a>
+                            <a href="gap4.html">Gap 4</a>
                         </div>
                     </div>
                 </div>
@@ -31,7 +29,7 @@
                     <div class="dropdown-content">
                         <div class="dropdown-content-inner">
                             <a href="tripla1.html">Tripla Gap 1</a>
-                            <a href="tripla2.html">Tripla Gap 2</a>
+                            <a href="tripla2.html" class="active">Tripla Gap 2</a>
                             <a href="tripla3.html">Tripla Gap 3</a>
                             <a href="tripla4.html">Tripla Gap 4</a>
                         </div>
@@ -42,72 +40,57 @@
                 </div>
                 <div class="lang-switch">
                     <span class="active-lang">IT</span>
-                    <a href="gap4_en.html">EN</a>
+                    <a href="tripla2_en.html">EN</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <main class="narrow">
-        <h1>Gap 4: carriera accademica</h1>
-        <p>Questo gap è relativo alle specializzazioni e alle attività professionali che Laura ha svolto nel corso della
-            sua carriera accademica.
-            Per la nostra esplorazione ci siamo concentrati su due proprietà: "field of work" e "occupation". </p>
+        <h1>Gap 2: premi e riconoscimenti di Laura Bassi</h1>
+        <p>Esempi pratici di query semantiche per estrarre informazioni strutturate direttamente da Wikidata.</p>
 
         <div class="query-box">
-            <h2>Prima query: "field of work" di Laura Bassi</h2>
-            <p>Questa query serve a mappare cosa dice attualmente Wikidata sulle specializzazioni associate a Laura
-                Bassi.</p>
-
+            <h2>"Award received" </h2>
+            <p>Dalle fonti bibliografiche emerge che Laura Bassi ricevette diversi premi e riconoscimenti per la sua attività scientifica. 
+            Tuttavia, su Wikidata, questi non sono modellati come una classe coerente e completa di "award received" (P166).
+            Eseguendo la query, otteniamo solo 4 risultati sotto la categoria "named after".</p>
+    
+            </p>
+            
             <div class="code-container">
-                <pre><code>SELECT DISTINCT ?field ?fieldLabel WHERE {
+<pre><code>SELECT ?item ?type WHERE {
+  {
+    ?item wdt:P138 wd:Q541652 .
+    BIND("named after" AS ?type)
+  }
+  UNION
+  {
+    ?item wdt:P547 wd:Q541652 .
+    BIND("commemorative name" AS ?type)
+  }
+  UNION
+  {
+    ?item wdt:P166 wd:Q541652 .
+    BIND("awards received" AS ?type)
+  }
 
-wd:Q541652 p:P101 ?statement .
-  ?statement ps:P101 ?field .
-  
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
+  SERVICE wikibase:label {
+    bd:serviceParam wikibase:language "it,en".
+  }
 }
 </code></pre>
             </div>
             <div class="query-action">
-                <a href="RisultatiQueryHTML/risultatoQuery7_fieldOfWork.html" class="action-btn-left">
+                <a href="RisultatiQueryHTML\risultatoQuery4_Riconoscimenti.html" class="action-btn-left">
                     ← Vedi Risultati Salvati
                 </a>
                 <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
                     Esegui Query Service ↗
                 </a>
             </div>
-        </div>
-        <p>In base ai dati strutturati di Wikidata, Laura Bassi ha lavorato nel settore dell'anatomia, della fisica e
-            della biologia.
-            Tuttavia, in base alle fonti bibliografiche il "field of work" non si limita a queste discipline.
-        </p>
-
-        <div class="query-box">
-            <h2>Seconda query: "occupation" di Laura Bassi</h2>
-            <p>Questa query serve a mappare cosa dice attualmente Wikidata sulle professioni svolte da Laura Bassi.</p>
-
-            <div class="code-container">
-                <pre><code>SELECT DISTINCT ?occupation ?occupationLabel WHERE {
-  
-  wd:Q541652 wdt:P106 ?occupation .
-  
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
-}
-</code></pre>
-            </div>
-            <div class="query-action">
-                <a href="RisultatiQueryHTML\risultatoQuery8_Occupation.html" class="action-btn-left">
-                    ← Vedi Risultati Salvati
-                </a>
-                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
-                    Esegui Query Service ↗
-                </a>
             </div>
         </div>
-        <p>In un periodo della sua vita, Laura è stata professoressa di filosofia ma questa informazione nel risulta nella nostra analisi precedente. 
-            Infatti, tra le discipline accademiche non risulta la filosofia.
-        </p>
     </main>
 
     <footer>
@@ -117,5 +100,4 @@ wd:Q541652 p:P101 ?statement .
         </div>
     </footer>
 </body>
-
 </html>
