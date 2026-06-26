@@ -51,13 +51,10 @@
         <p>Esempi pratici di query semantiche per estrarre informazioni strutturate direttamente da Wikidata.</p>
 
         <div class="query-box">
-            <h2>"Award received" </h2>
+            <h2>"Award received"</h2>
             <p>Dalle fonti bibliografiche emerge che Laura Bassi ricevette diversi premi e riconoscimenti per la sua attività scientifica. 
-            Tuttavia, su Wikidata, questi non sono modellati come una classe coerente e completa di "award received" (P166).
-            Eseguendo la query, otteniamo solo 4 risultati sotto la categoria "named after".</p>
-    
-            </p>
-            
+            Tuttavia, su Wikidata, questi non sembrano modellati esclusivamente come una classe coerente e completa di "award received" (P166)</p>
+
             <div class="code-container">
 <pre><code>SELECT ?item ?type WHERE {
   {
@@ -82,15 +79,49 @@
 </code></pre>
             </div>
             <div class="query-action">
-                <a href="RisultatiQueryHTML\risultatoQuery4_Riconoscimenti.html" class="action-btn-left">
+                <a href="RisultatiQueryHTML/risultatoQuery4_Riconoscimenti.html" class="action-btn-left">
                     ← Vedi Risultati Salvati
                 </a>
                 <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
                     Esegui Query Service ↗
                 </a>
             </div>
+        </div>
+
+        <p>
+            Le numerose commemorazioni e intitolazioni dedicate a Laura Bassi (crateri, asteroidi, navi, istituzioni scientifiche e toponomastica) sono presenti nelle fonti biografiche, ma non sono modellate nel knowledge graph correttamente a livello meramente semantico. Risultano infatti essere solo in parte sotto la categoria “named after”, quindi nelle intitolazioni, ma ne appaiono solo 4!
+        </p>
+
+        <div class="query-box">
+            <p>
+                Sulle fonti biografiche di Wikipedia stessa, si possono trovare almeno 7 riconoscimenti, abbiamo quindi provato a verificare di cosa trattassero le entità presenti sul grafo:
+            </p>
+            <div class="code-container">
+<pre><code>SELECT ?item ?itemLabel WHERE {
+  ?item wdt:P138 wd:Q541652 .
+
+  ?item rdfs:label ?itemLabel .
+
+  FILTER(LANG(?itemLabel) = "it")
+
+  FILTER(REGEX(LCASE(?itemLabel), "bassi"))
+}
+</code></pre>
+            </div>
+            <div class="query-action">
+                <a href="RisultatiQueryHTML/risultatoQuery5_FILTER.html" class="action-btn-left">
+                    ← Vedi Risultati Salvati
+                </a>
+                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
+                    Esegui Query Service ↗
+                </a>
             </div>
         </div>
+
+        <p>
+            Il risultato è pessimo. Riceviamo come risultato della query solo 4 entità. Di queste, due hanno una label che non sembra essere semanticamente corretta, non è intuitivo né per un umano, né per una macchina, capire che “Bassi” faccia riferimento ad un cratere su Venere, ne tantomeno “Laura Bassi”, essere una nave rompighiaccio.
+        </p>
+
     </main>
 
     <footer>
