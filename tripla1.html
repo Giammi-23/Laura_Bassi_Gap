@@ -50,52 +50,46 @@
 
     <main class="narrow">
         <h1>Tripla Gap 1: Status Istituzionale e Primato Storico</h1>
-        <p>Laura Bassi fu la prima donna in Europa a ottenere una posizione accademica ufficiale in fisica
-            all'Università di Bologna. Su Wikidata, però, questo fatto non è modellato come proprietà esplicita ma è
-            solo “implicito” nella combinazione di:</p>
-        <ul class="styled-list">
-            <li> "occupazione" (P106) = physicist </li>
-            <li> "datore di lavoro" (P108) = University of Bologna </li>
-        </ul>
-        <p></p>
-        <p> Ma non è utilizzata la proprietà “position held” (P39), che sottolineerebbe la carica istituzionale che le è
-            stata assegnata tramite decreto, rafforzando il livello semantico del suo primato.</p>
-        <p>Il gap semantico è proprio questo: sebbene le fonti biografiche evidenzino il ruolo pionieristico di Laura
-            Bassi come prima donna in Europa a ricoprire una cattedra in fisica, tale informazione non è esplicitamente
-            modellata nel knowledge graph come relazione strutturata, ma rimane implicita nella combinazione di
-            occupazione e affiliazione accademica.
+        <p>Il primato storico di Laura Bassi non è modellato come carica istituzionale (P39 — assente), ma
+            semplicemente come occupazione. Abbiamo scoperto poi, l'esistenza di un elemento Q107609509 ("first
+            woman to hold a position") di tipo oggetto Wikidata, non una proprietà!
+            Questo rivela un gap non solo quantitativo (dato mancante) ma strutturale: Wikidata non dispone
+            attualmente di un vocabolario adeguato per rappresentare primati storici di questo tipo!
         </p>
 
-        <div class="query-box">
-            <h2>1. "Occupation" vs. "Position held"</h2>
-            <p>Il primato storico di Laura Bassi non è modellato come carica istituzionale (P39 — assente), ma
-                semplicemente come occupazione. Abbiamo scoperto poi, l'esistenza di un elemento Q107609509 ("first
-                woman to hold a position") di tipo oggetto Wikidata, non una proprietà!
-                Questo rivela un gap non solo quantitativo (dato mancante) ma strutturale: Wikidata non dispone
-                attualmente di un vocabolario adeguato per rappresentare primati storici di questo tipo!
-            </p>
 
-            <div class="code-container">
-                <pre><code>SELECT DISTINCT ?person ?personLabel ?occupation ?occupationLabel 
-                ?position ?positionLabel
-WHERE {
-  VALUES ?person { wd:Q541652 } # La variabile ?person è tassativamente Laura Bassi
-  
-  OPTIONAL { wd:Q541652 wdt:P106 ?occupation }     # occupation
-  OPTIONAL { wd:Q541652 wdt:P39 ?position }        # position held
-  
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
-}
-</code></pre>
+        <div class="query-box">
+            <h2>Zero Shot</h2>
+            <p>Prompt: "<i>Agisci come un esperto di Web Semantico e Knowledge Graph. Stai lavorando per un progetto che
+                    utilizza il knowledge graph di Wikidata. L'entità “Laura Bassi” (wd:Q541652) presenta un gap
+                    semantico. Attualmente la sua cattedra del 1732 all'Università di Bologna è descritta solo come
+                    “occupazione” (wdt:P106), mentre manca completamente la proprietà strutturale “position held”
+                    (wdt:P39). Questa assenza impedisce di qualificare istituzionalmente il suo ruolo di prima donna
+                    titolare di una cattedra in Europa. Genera direttamente le triple RDF in formato Turtle per colmare
+                    questo gap. Mappa il ruolo di Laura Bassi come "docente universitario" (university teacher,
+                    wd:Q1622272) utilizzando la proprietà corretta di Wikidata (wdt:P39). Includi nel codice la tripla
+                    ufficiale con i predicati di Wikidata.</i>"</p>
+
+            <h3>GPT-4</h3>
+            <div class="image-content">
+                <img src="images/zero_shot_chatgpt.png" alt="Risultato prompt GPT-4">
             </div>
-            <div class="query-action">
-                <a href="RisultatiQueryHTML/risultatoQuery3_Occ&Pos..html" class="action-btn-left">
-                    ← Vedi Risultato Query
-                </a>
-                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
-                    Esegui Query Service ↗
-                </a>
+
+            <p></p>
+
+            <h3>Claude 4.5 Sonnet</h3>
+            <div class="image-content">
+                <img src="images/zero_shot_claude.png" alt="Risultato prompt Claude 4.5 Sonnet">
             </div>
+            <p>Il codice genera due livelli di rappresentazione, come previsto dall'ontologia Wikidata:</p>
+            <p>Truthy layer (wdt:P39) — la tripla assertiva minima, usata da SPARQL nelle query standard. Basta questa per colmare il gap strutturale rilevato nella tua analisi.</p>
+            <p>Full reification layer (p:P39 + statement node) — il livello ricco che permette di qualificare l'affermazione con quattro predicati:</p>  
+            <ul class="styled-list">
+                <li> pq:P580 / pq:P582 — delimitano temporalmente la cattedra (1732-1778) </li>
+                <li> pq:P108 — ancora il ruolo all'istituzione (wd:Q131262, Università di Bologna) </li>
+                <li> pq:P805 — collega al soggetto della cattedra (wd:Q752596, Cattedra di filosofia) </li>
+            </ul>    
+            <p>L'ID del nodo statement (wd:Q541652-P39-BASSI-1732) segue la convenzione Wikidata per i GUID sintetici; in una submission reale va sostituito con il GUID generato dal sistema. Se vuoi aggiungere anche la fonte bibliografica con prov:wasDerivedFrom, posso integrare il blocco di provenance.</p>
         </div>
     </main>
 

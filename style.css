@@ -600,3 +600,14 @@ pre code {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
+.image-content {
+    width: 100%;
+    overflow-x: auto; /* Permette lo scroll orizzontale se lo screenshot è enorme su mobile */
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
