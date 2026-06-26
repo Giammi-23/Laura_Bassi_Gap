@@ -300,6 +300,7 @@ main.wide {
     align-items: center;
     padding: 48px 0;
     border-top: 1px solid #e6e1da;
+    border-bottom: 1px solid #e6e1da;
 }
 
 @media (min-width: 768px) {
@@ -631,3 +632,101 @@ pre code {
     height: auto;
     display: block;
 }
+
+
+/* ### Grid 2 colonne — Team & Strumenti ### */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 48px 0;
+    border-top: 1px solid #e6e1da;
+}
+
+@media (min-width: 768px) {
+    .grid-2 {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.grid-2-block h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #1c1b1a;
+    margin-bottom: 24px;
+}
+
+/* Team */
+.team-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.team-member {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.member-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #f5f1eb;
+    border: 1px solid #e6e1da;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #b45309;
+    flex-shrink: 0;
+}
+
+.member-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.member-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #1c1b1a;
+}
+
+.member-role {
+    font-size: 0.8rem;
+    color: #8c857b;
+    font-weight: 300;
+}
+
+/* Strumenti */
+.tools-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.tool-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 12px 0;
+    border-bottom: 1px solid #f5f1eb;
+    gap: 16px;
+}
+
+.tool-item:last-child {
+    border-bottom: none;
+}
+
+.tool-desc {
+    font-size: 0.8rem;
+    color: #8c857b;
+    font-weight: 300;
+    text-align: right;
+}
+
+/* ####### */
