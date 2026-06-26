@@ -50,41 +50,70 @@
 
     <main class="narrow">
         <h1>Tripla Gap 3: Invisibilità dei Legami (Mentorship e Network)</h1>
-        <p>Dalle fonti biografiche su Laura Bassi emerge una rete di relazioni scientifiche particolarmente
-            significativa. Bassi collaborò infatti con Giovanni Battista Beccaria nell'ambito degli studi sull'elettricità, fu
-            in contatto con Alessandro Volta e fu insegnante di Lazzaro Spallanzani, suo cugino.</p>
-        <p>Il nostro obiettivo è stato quindi di verificare se tali relazioni fossero rappresentate
-            correttamente all'interno del knowledge graph.</p>
+        <p>L'unico risultato che otteniamo è la relazione “student” (P802) con Lazzaro Spallanzani, che risulta quindi esseree correttamente modellato. Le altre relazioni invece, non appaiono mai!
+        </p>
 
         <div class="query-box">
-            <h2>1. Verifica delle relazioni accademiche</h2>
-            <p>L'unico risultato che otteniamo è la relazione “student” (P802) con Lazzaro Spallanzani, che risulta
-                quindi esseree correttamente modellato. Le altre relazioni invece, non appaiono mai!</p>
+            <h2><span>Chain-of-Thought (CoT)</span></h2>
+            <p>Prompt: "<i>Sei un esperto di Web Semantico e modellazione di Knowledge Graph (in particolare Wikidata).
+            
+                Il tuo obiettivo è analizzare il testo biografico fornito in input, identificare le relazioni storiche/scientifiche tra i personaggi menzionati e generare delle triple RDF per colmare un gap informativo nel Knowledge Graph.
 
-            <div class="code-container">
-                <pre><code>SELECT ?person ?personLabel ?property ?propertyLabel WHERE {
-  VALUES ?person { wd:Q680 wd:Q223723 wd:Q213351}  # Volta, Beccaria, Spallanzani
-  
-  wd:Q541652 ?p ?person .
-  ?property wikibase:directClaim ?p .
+                Per farlo, devi utilizzare un approccio "Chain of Thought" (ragionamento passo-passo). Mostra esplicitamente il tuo ragionamento seguendo questi step:</i>
+            </p>
+            <ul class="styled-list">
+                <li><i> STEP 1: Identificazione delle Entità Principali - Trova i soggetti nel testo e assegna loro i relativi identificativi Wikidata forniti nel contesto (Laura Bassi -> Q541652, Alessandro Volta -> Q680, Giovanni Battista Beccaria -> Q223723). </i></li>
+                <li><i> STEP 2: Analisi delle Relazioni - Analizza i passaggi del testo che testimoniano un contatto, una corrispondenza o una relazione scientifica/intellettuale tra Laura Bassi e gli altri scienziati. </i></li>
+                <li><i> STEP 3: Generazione del Codice RDF/Wikidata - Traduci la relazione in triple formali, utilizzando sia un'ontologia fittizia locale (`:significantperson`) sia la sintassi di Wikidata con la proprietà placeholder `wdt:P3342`. </i></li>
+            </ul>
+            <p><i>FORMATO DI OUTPUT RICHIESTO: Restituisci prima la sezione "### Ragionamento (Chain of Thought)" e infine la sezione "### Triple RDF Generate" racchiusa in un blocco di codice Turtle/N-Triples.
 
-  SERVICE wikibase:label {
-    bd:serviceParam wikibase:language "it,en".
-  }
-}
-</code></pre>
+                CONTESTO IDENTIFICATIVI:
+            </i></p>
+            <ul class="styled-list">
+                <li><i> Laura Bassi: wd:Q541652 o :Laura_Bassi </i></li>
+                <li><i> Alessandro Volta: wd:Q680 o :Alessandro_Volta </i></li>
+                <li><i> Giovanni Battista Beccaria: wd:Q223723 o :Giovanni_Beccaria </i>"</li>
+                <li><i> Proprietà generica di rete scientifica: :significantperson wdt:P3342 </i>"</li>
+            </ul>
+
+            <p><i>Laura Bassi era una seguace delle teorie newtoniane e cercò di applicarle in molteplici campi di ricerca, in particolare alla fisica elettrica, di cui divenne, assieme con il marito, uno dei principali cultori italiani. Era inoltre in stretto contatto con Giovanni Battista Beccaria e Alessandro Volta.
+            </i>"</p>
+
+            <h3><span>GPT-4</span></h3>
+            <div class="image-content">
+                <img src="images/cot_chatgpt.png" alt="Risultato prompt GPT-4">
             </div>
-            <div class="query-action">
-                <a href="RisultatiQueryHTML/risultatoQuery6_Spallanzani.html" class="action-btn-left">
-                    ← Vedi Risultato Query
-                </a>
-                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
-                    Esegui Query Service ↗
-                </a>
+
+            <p></p>
+
+            <h3><span>Claude 3.5 Sonnet</span></h3>
+            <div class="image-content">
+                <img src="images/cot_claude1.png" alt="Risultato prompt Claude 4.5 Sonnet">
+            </div>
+            <div class="image-content">
+                <img src="images/cot_claude2.png" alt="Risultato prompt Claude 4.5 Sonnet">
+            </div>
+            <div class="image-content">
+                <img src="images/cot_claude3.png" alt="Risultato prompt Claude 4.5 Sonnet">
+            </div>
+            <div class="image-content">
+                <img src="images/cot_claude4.png" alt="Risultato prompt Claude 4.5 Sonnet">
             </div>
         </div>
-    </main>
 
+        <h3><span>Soluzione Tripla RDF</span></h3>
+        <p>Dopo aver analizzato e studiato approfonditamente le risposte fornite dai due LLM attraverso la tecnica del Chain-of-Thought, il nostro team ha costruito la soluzione definitiva per colmare il gap relativo alla rete scientifica di Laura Bassi, sempre adottando un approccio di validazione critica:</p>
+        <div class="code-container">
+            <pre><code>
+                :Laura_Bassi :scientificNetworkConnection :Alessandro_Volta .
+                wd:Q541652 wdt:PXX wd:Q680 .
+
+                :Laura_Bassi :scientificNetworkConnection :Giovanni_Beccaria .
+                wd:Q541652 wdt:PXX wd:Q223723 .
+            </code></pre>
+        </div>
+    </main>
 
     <footer>
         <div class="container">
