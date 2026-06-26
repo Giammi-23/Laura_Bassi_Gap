@@ -15,6 +15,7 @@ dl,
 dt,
 dd,
 ul,
+ol,
 li,
 figure,
 blockquote,
@@ -420,22 +421,41 @@ section h2 {
 }
 
 /* Liste */
-ul.styled-list {
-    list-style-type: disc;
-    list-style-position: inside;
+ul.styled-list, 
+ol.styled-list {
+    padding-left: 20px; /* Ricrea il rientro naturale a sinistra */
+    color: #615e5a;
+    font-weight: 200;
+}
+
+ul.styled-list li, 
+ol.styled-list li {
+    margin-top: 10px;       /* Ridotto per uniformarlo alla linea del testo */
+    margin-bottom: 10px;
+    line-height: 1.625;     /* Identica interlinea dei paragrafi */
+    text-align: justify;    /* Giustificato esattamente come p */
+}
+
+ul.styled-list strong, 
+ol.styled-list strong {
+    font-weight: 500;
+    color: #1c1b1a;
+}
+
+.query-box ul.styled-list,
+.query-box ol.styled-list {
+    padding-left: 20px;
+    font-size: 0.875rem;
     color: #615e5a;
     font-weight: 300;
 }
 
-ul.styled-list li {
-    margin-top: 20px;
-    margin-bottom: 16px;
+.query-box ul.styled-list li,
+.query-box ol.styled-list li {
+    margin-top: 10px;
+    margin-bottom: 10px;
     line-height: 1.625;
-}
-
-ul.styled-list strong {
-    font-weight: 500;
-    color: #1c1b1a;
+    text-align: justify;
 }
 
 /* Tabelle */

@@ -50,64 +50,91 @@
 
     <main class="narrow">
         <h1>Tripla Gap 4: Campo di Attività e Specificità Professionale</h1>
-        <p>Questo gap è relativo alle specializzazioni e alle attività professionali che Laura ha svolto nel corso della
-            sua carriera accademica.
-            Per la nostra esplorazione ci siamo concentrati su due proprietà: "field of work" e "occupation". </p>
+        <p>Questo gap è relativo alle specializzazioni e alle attività professionali che Laura ha svolto nel corso della sua carriera accademica. Per la nostra esplorazione ci siamo concentrati su due proprietà: "field of work" e "occupation".</p>
 
         <div class="query-box">
-            <h2>Prima query: "field of work" di Laura Bassi</h2>
-            <p>Questa query serve a mappare cosa dice attualmente Wikidata sulle specializzazioni associate a Laura
-                Bassi.</p>
+            <h2><span>Few Shot Chain-of-Thought (Few Shot-CoT)</span></h2>
+            <p>Prompt: "<i>Sei un esperto di Web Semantico e Wikidata. Il tuo compito è estrarre informazioni dal testo fornito e modellarle in triple RDF (formato Turtle) incentrate su Laura Bassi (wd:Q541652). Devi mappare le informazioni usando specificamente queste proprietà di Wikidata:
+            </i></p>
+            <ul class="styled-list">
+                <li><i> wdt:P101 (campo di attività / field of work) </i></li>
+                <li><i> wdt:P106 (occupazione / occupation) </i></li>
+            </ul>
+            <p><i>Usa la tecnica Chain-of-Thought (ragionamento passo-passo) seguendo questo schema per ogni tripla:
+            </i></p>
+            <ol class="styled-list">
+                <li><i> Analisi del testo: individua il concetto </i></li>
+                <li><i> Identificazione del predicato: stabilisci se si tratta di Campo di Attività (P101) o Occupazione (P106). </i></li>
+                <li><i> Identificazione dell'oggetto: individua il Qid di Wikidata corretto </i></li>
+                <li><i> Tripla finale. </i>"</li>
+            </ol>
 
-            <div class="code-container">
-                <pre><code>SELECT DISTINCT ?field ?fieldLabel WHERE {
+            <p><i>Ecco due esempi di riferimento (Few-Shot): </i></p>
 
-wd:Q541652 p:P101 ?statement .
-  ?statement ps:P101 ?field .
-  
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
-}
-</code></pre>
+            <p><i>Esempio 1: </i></p>  
+            <p><i>Testo: "Marie Curie (wd:Q1350) ha lavorato nel campo della chimica." </i></p>  
+            <p><i>Ragionamento: </i></p>
+            <ol class="styled-list">
+                <li><i> Analisi del testo: Si parla dell'ambito in cui ha operato (chimica). </i></li>
+                <li><i> Predicato: Campo di attività -> wdt:P101. </i></li>
+                <li><i> Oggetto: chimica -> wd:Q395. </i></li>
+            </ol>
+            <p><i>Tripla: </i></p>
+            <p><i><code>wd:Q1350 wdt:P101 wd:Q395 .</code> </i></p>
+            
+            <p><i>Esempio 2: </i></p>  
+            <p><i>Testo: "Albert Einstein (wd:Q937) fu assunto come fisico teorico."</i></p>  
+            <p><i>Ragionamento: </i></p>
+            <ol class="styled-list">
+                <li><i> Analisi del testo: Si parla del suo ruolo lavorativo/professione (fisico). </i></li>
+                <li><i> Predicato: Occupazione -> wdt:P106. </i></li>
+                <li><i> Oggetto: fisico -> wd:Q169470. </i></li>
+            </ol>
+            <p><i>Tripla: </i></p>
+            <p><i><code>wd:Q937 wdt:P106 wd:Q169470 .</code> </i></p>
+
+            <p><i>Ora applica lo stesso identico metodo al seguente testo: </i></p>
+            <p><i>"Laura Bassi (wd:Q541652) è stata una figura chiave per la storia della scienza. Ha dedicato la sua vita alla ricerca nei campi della fisica (wd:Q413) e della matematica (wd:Q395). Grazie ai suoi successi, ottenne ruoli ufficiali lavorando come fisico (wd:Q169470), matematico (wd:Q170790) e professore di filosofia (wd:Q16222729) presso l'Università di Bologna."</i>"</p>
+
+            <h3><span>GPT-4</span></h3>
+            <div class="image-content">
+                <img src="images/few_cot_chatgpt1.png" alt="Risultato prompt GPT-4">
             </div>
-            <div class="query-action">
-                <a href="RisultatiQueryHTML/risultatoQuery7_fieldOfWork.html" class="action-btn-left">
-                    ← Vedi Risultati Salvati
-                </a>
-                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
-                    Esegui Query Service ↗
-                </a>
+            <div class="image-content">
+                <img src="images/few_cot_chatgpt2.png" alt="Risultato prompt GPT-4">
+            </div>
+            <div class="image-content">
+                <img src="images/few_cot_chatgpt3.png" alt="Risultato prompt GPT-4">
+            </div>
+
+            <p></p>
+
+            <h3><span>Claude 3.5 Sonnet</span></h3>
+            <div class="image-content">
+                <img src="images/few_cot_claude1.png" alt="Risultato prompt Claude 4.5 Sonnet">
+            </div>
+            <div class="image-content">
+                <img src="images/few_cot_claude2.png" alt="Risultato prompt Claude 4.5 Sonnet">
+            </div>
+            <div class="image-content">
+                <img src="images/few_cot_claude3.png" alt="Risultato prompt Claude 4.5 Sonnet">
+            </div>
+            <div class="image-content">
+                <img src="images/few_cot_claude4.png" alt="Risultato prompt Claude 4.5 Sonnet">
             </div>
         </div>
-        <p>In base ai dati strutturati di Wikidata, Laura Bassi ha lavorato nel settore dell'anatomia, della fisica e
-            della biologia.
-            Tuttavia, in base alle fonti bibliografiche il "field of work" non si limita a queste discipline.
-        </p>
 
-        <div class="query-box">
-            <h2>Seconda query: "occupation" di Laura Bassi</h2>
-            <p>Questa query serve a mappare cosa dice attualmente Wikidata sulle professioni svolte da Laura Bassi.</p>
+        <h3><span>Soluzione Tripla RDF</span></h3>
+        <p>Per risolvere il Gap 4, che riguardava la confusione semantica tra l'occupazione professionale e il campo di attività scientifica, abbiamo applicato la tecnica del Few-shot Chain-of-Thought. Questa metodologia ha permesso di istruire l'LLM a distinguere tra "ciò che Laura Bassi faceva come mestiere" e "la materia su cui verteva la sua ricerca". Anche in questo caso, la nostra attività non si è conclusa con la generazione automatica, ma è proseguita con una fase di supervisione umana e validazione per garantire la qualità del dato:</p>
+        <div class="code-container">
+            <pre><code>
+                :Laura_Bassi :fieldOfWork :phylosophy 
+                wd:Q541652 wdt:P101 wd:Q5891 .
 
-            <div class="code-container">
-                <pre><code>SELECT DISTINCT ?occupation ?occupationLabel WHERE {
-  
-  wd:Q541652 wdt:P106 ?occupation .
-  
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
-}
-</code></pre>
-            </div>
-            <div class="query-action">
-                <a href="RisultatiQueryHTML\risultatoQuery8_Occupation.html" class="action-btn-left">
-                    ← Vedi Risultati Salvati
-                </a>
-                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
-                    Esegui Query Service ↗
-                </a>
-            </div>
+                :Laura_Bassi :fieldOfWork :mathematics 
+                wd:Q541652 wdt:P101 wd:Q395 .
+            </code></pre>
         </div>
-        <p>In un periodo della sua vita, Laura è stata professoressa di filosofia ma questa informazione nel risulta nella nostra analisi precedente. 
-            Infatti, tra le discipline accademiche non risulta la filosofia.
-        </p>
     </main>
 
     <footer>
