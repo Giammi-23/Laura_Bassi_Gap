@@ -57,7 +57,6 @@
             attualmente di un vocabolario adeguato per rappresentare primati storici di questo tipo!
         </p>
 
-
         <div class="query-box">
             <h2>Zero Shot</h2>
             <p>Prompt: "<i>Agisci come un esperto di Web Semantico e Knowledge Graph. Stai lavorando per un progetto che
@@ -77,21 +76,31 @@
 
             <p></p>
 
-            <h3>Claude 4.5 Sonnet</h3>
+            <h3>Claude 3.5 Sonnet</h3>
             <div class="image-content">
                 <img src="images/zero_shot_claude.png" alt="Risultato prompt Claude 4.5 Sonnet">
             </div>
-            <code><p>Il codice genera due livelli di rappresentazione, come previsto dall'ontologia Wikidata:</p>
-            <p>Truthy layer (wdt:P39) — la tripla assertiva minima, usata da SPARQL nelle query standard. Basta questa per colmare il gap strutturale rilevato nella tua analisi.</p>
-            <p>Full reification layer (p:P39 + statement node) — il livello ricco che permette di qualificare l'affermazione con quattro predicati:</p>  
-            <ul class="styled-list">
-                <li> pq:P580 / pq:P582 — delimitano temporalmente la cattedra (1732-1778) </li>
-                <li> pq:P108 — ancora il ruolo all'istituzione (wd:Q131262, Università di Bologna) </li>
-                <li> pq:P805 — collega al soggetto della cattedra (wd:Q752596, Cattedra di filosofia) </li>
-            </ul>    
-            <p>L'ID del nodo statement (wd:Q541652-P39-BASSI-1732) segue la convenzione Wikidata per i GUID sintetici; in una submission reale va sostituito con il GUID generato dal sistema. Se vuoi aggiungere anche la fonte bibliografica con prov:wasDerivedFrom, posso integrare il blocco di provenance.</p>
-        </code></div>
-            
+            <code>
+                <p>Il codice genera due livelli di rappresentazione, come previsto dall'ontologia Wikidata:</p>
+                <p>Truthy layer (wdt:P39) — la tripla assertiva minima, usata da SPARQL nelle query standard. Basta questa per colmare il gap strutturale rilevato nella tua analisi.</p>
+                <p>Full reification layer (p:P39 + statement node) — il livello ricco che permette di qualificare l'affermazione con quattro predicati:</p>  
+                <ul class="styled-list">
+                    <li> pq:P580 / pq:P582 — delimitano temporalmente la cattedra (1732-1778) </li>
+                    <li> pq:P108 — ancora il ruolo all'istituzione (wd:Q131262, Università di Bologna) </li>
+                    <li> pq:P805 — collega al soggetto della cattedra (wd:Q752596, Cattedra di filosofia) </li>
+                </ul>    
+                <p>L'ID del nodo statement (wd:Q541652-P39-BASSI-1732) segue la convenzione Wikidata per i GUID sintetici; in una submission reale va sostituito con il GUID generato dal sistema. Se vuoi aggiungere anche la fonte bibliografica con prov:wasDerivedFrom, posso integrare il blocco di provenance.</p>
+            </code>
+        </div>
+
+        <h3>Soluzione Tripla RDF</h3>
+        <p>Dopo aver analizzato e studiato criticamente gli output generati dagli LLM, abbiamo riscontrato la necessità di intervenire manualmente per correggere alcune allucinazioni semantiche e imprecisioni formali (inclusi ID Wikidata inventati). Sulla base di questa revisione, abbiamo sintetizzato e strutturato la soluzione formale definitiva. Di seguito viene presentata la tripla RDF in formato Turtle che sana il gap strutturale individuato:</p>
+        <div class="code-container">
+            <pre><code>
+                wd:Q541652 wdt:P39 wd:Q1622272 .
+                :Laura_Bassi :positionHeld :university_teacher
+            </code></pre>
+        </div>
     </main>
 
     <footer>
@@ -102,4 +111,4 @@
     </footer>
 </body>
 
-</html>
+</html

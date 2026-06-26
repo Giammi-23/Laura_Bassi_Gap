@@ -1,11 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tripla 2 | Laura Bassi Wikidata</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav>
         <div class="nav-container">
@@ -48,48 +50,71 @@
 
     <main class="narrow">
         <h1>Tripla Gap 2: Premi, Riconoscimenti e Intitolazioni</h1>
-        <p>Esempi pratici di query semantiche per estrarre informazioni strutturate direttamente da Wikidata.</p>
+        <p>Dalle fonti bibliografiche emerge che Laura Bassi ricevette diversi premi e riconoscimenti per la sua
+            attività scientifica. Tuttavia, su Wikidata, questi non sono modellati come una classe coerente e completa
+            di "award received" (P166). Eseguendo la query, otteniamo solo 4 risultati sotto la categoria "named after".
+        </p>
 
         <div class="query-box">
-            <h2>"Award received" </h2>
-            <p>Dalle fonti bibliografiche emerge che Laura Bassi ricevette diversi premi e riconoscimenti per la sua attività scientifica. 
-            Tuttavia, su Wikidata, questi non sono modellati come una classe coerente e completa di "award received" (P166).
-            Eseguendo la query, otteniamo solo 4 risultati sotto la categoria "named after".</p>
-    
-            </p>
-            
-            <div class="code-container">
-<pre><code>SELECT ?item ?type WHERE {
-  {
-    ?item wdt:P138 wd:Q541652 .
-    BIND("named after" AS ?type)
-  }
-  UNION
-  {
-    ?item wdt:P547 wd:Q541652 .
-    BIND("commemorative name" AS ?type)
-  }
-  UNION
-  {
-    ?item wdt:P166 wd:Q541652 .
-    BIND("awards received" AS ?type)
-  }
+            <h2>Few Shot</h2>
+            <p>Prompt: "<i>Sei un esperto di Web Semantico e Knowledge Graph. Stai lavorando per un progetto che
+                    utilizza il knowledge graph di Wikidata. Il tuo compito è esplorare il knowledge graph di Wikidata
+                    per arricchirlo e introdurre nuove triple RDF.
 
-  SERVICE wikibase:label {
-    bd:serviceParam wikibase:language "it,en".
-  }
-}
-</code></pre>
+                    Utilizza rigorosamente la sintassi Turtle/Wikidata usando i prefissi standard (wd: per gli item,
+                    wdt: per le proprietà).
+
+                    Utilizza questi ESEMPI DI RIFERIMENTO:</i>
+            </p>
+            <ul class="styled-list">
+                <li><i> "Nel 1930 a Bologna venne fondato il Liceo Statale Laura Bassi, una scuola superiore intitolata
+                        alla
+                        celebre scienziata."
+                        Ragionamento: Il testo indica che il Liceo Statale Laura Bassi (wd:Q3832014) è stato intitolato
+                        a
+                        ("named after", proprietà wdt:P138) Laura Bassi (wd:Q541652).
+                        Tripla RDF: wd:Q3832014 wdt:P138 wd:Q541652 . </i></li>
+                <li><i> "Il cratere Bassi sulla superficie di Venere è stato battezzato così in onore della fisica
+                        italiana."
+                        Ragionamento: Il cratere Bassi (wd:Q2271295) prende il nome da ("named after", proprietà
+                        wdt:P138)
+                        Laura Bassi (wd:Q541652). </i></li>
+            </ul>
+            <p><i>
+                    il tuo compito è di analizzare il seguente testo, identificando l'entità soggetto, la proprietà
+                    corretta e l'entità oggetto, e infine restituisci SOLO la tripla RDF corrispondente.
+
+                    Testo da analizzare: "L'asteroide 15742 LauraBassi, scoperto nel 1991, è un asteroide della fascia
+                    principale intitolato in memoria della celebre scienziata bolognese del Settecento."
+
+                    ISTRUZIONI PER L'OUTPUT</i></p>
+            <ol class="styled-list">
+                <li><i> Identifica l'entità soggetto (usa l'ID corretto per l'asteroide 15742 Laurabassi, che è
+                        wd:Q19626332). </i></li>
+                <li><i> Identifica l'entità oggetto (Laura Bassi, che è wd:Q541652). </i></li>
+                <li><i> Usa la proprietà corretta per "intitolato a" (wdt:P138). </i>"</li>
+            </ol>
+
+            <h3>GPT-4</h3>
+            <div class="image-content">
+                <img src="images/few_shot_chatgpt.png" alt="Risultato prompt GPT-4">
             </div>
-            <div class="query-action">
-                <a href="RisultatiQueryHTML\risultatoQuery4_Riconoscimenti.html" class="action-btn-left">
-                    ← Vedi Risultati Salvati
-                </a>
-                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
-                    Esegui Query Service ↗
-                </a>
+
+            <p></p>
+
+            <h3>Claude 3.5 Sonnet</h3>
+            <div class="image-content">
+                <img src="images/few_shot_claude.png" alt="Risultato prompt Claude 4.5 Sonnet">
             </div>
-            </div>
+        </div>
+
+        <h3>Soluzione Tripla RDF</h3>
+        <p>Dopo aver analizzato e studiato criticamente gli output generati dagli LLM tramite la tecnica Few-Shot, abbiamo riscontrato l'accuratezza dei modelli nel combinare gli identificatori espliciti forniti:</p>
+        <div class="code-container">
+            <pre><code>
+                wd:Q19626332 wdt:P138 wd:Q541652 .
+                :asteroide15742 :named_after :Laura_Bassi
+            </code></pre>
         </div>
     </main>
 
@@ -100,4 +125,5 @@
         </div>
     </footer>
 </body>
+
 </html>
