@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div class="dropdown">
-                    <a href="prompting.html" class="active" class="dropbtn" >Tecniche Di Prompting ▾</a>
+                    <a href="prompting.html" class="active" class="dropbtn">Tecniche Di Prompting ▾</a>
                     <div class="dropdown-content">
                         <div class="dropdown-content-inner">
                             <a href="tripla1.html">Tripla Gap 1</a>
@@ -50,29 +50,84 @@
 
     <main class="narrow">
         <h1>Arricchimento Semantico tramite Large Language Models (LLM)</h1>
-        <p>In questa fase del progetto, abbiamo abbandonato la logica di SPARQL CONSTRUCT per delegare la generazione della nuova conoscenza ai <b><strong><span>Large Language Models</span></strong></b>. L'obiettivo è stato quello di agire come esperte di <b><strong>Prompt Engineering</strong></b> per istruire l'Intelligenza Artificiale ad estrarre informazioni dalle fonti biografiche e tradurle nel linguaggio formale del <b><strong>Web Semantico</strong></b>: il formato <b><strong>Turtle</strong></b>.</p>
+        <p>In questa fase del progetto, abbiamo abbandonato la logica di SPARQL CONSTRUCT per delegare la generazione
+            della nuova conoscenza ai <b><strong><span>Large Language Models</span></strong></b>. L'obiettivo è stato
+            quello di agire come esperte di <b><strong>Prompt Engineering</strong></b> per istruire l'Intelligenza
+            Artificiale ad estrarre informazioni dalle fonti biografiche e tradurle nel linguaggio formale del
+            <b><strong>Web Semantico</strong></b>: il formato <b><strong>Turtle</strong></b>.
+        </p>
 
         <section>
             <h2>Metodologia e Strategie di Prompting</h2>
-            <p>Per garantire l'accuratezza dei risultati, abbiamo applicato tre diverse tecniche di prompting, testando la capacità di ragionamento dei modelli su scenari di complessità crescente:</p>
-        
+            <p>Per garantire l'accuratezza dei risultati, abbiamo applicato tre diverse tecniche di prompting, testando
+                la capacità di ragionamento dei modelli su scenari di complessità crescente:</p>
+
             <ul class="styled-list">
-                <li><strong><span>Zero-Shot Prompting:</span></strong> Abbiamo fornito istruzioni dirette senza esempi, facendo affidamento sulla conoscenza pre-addestrata del modello riguardo l'ontologia di Wikidata;</li>
-                <li><strong><span>Few-Shot Prompting:</span></strong> Abbiamo guidato il modello fornendo da 2 a 5 esempi di input e output desiderato, stabilendo uno schema coerente per la generazione delle triple;</li>
-                <li><strong><span>Chain-of-Thought (CoT):</span></strong> Abbiamo incoraggiato il modello ad esplicitare il proprio ragionamento passo dopo passo (es. "Pensiamo passo dopo passo"), prima di produrre il codice finale. Questa tecnica si è rivelata fondamentale per risolvere ambiguità logiche tra occupazioni e campi di attività per esempio.</li>
+                <li><strong><span>Zero-Shot Prompting:</span></strong> Abbiamo fornito istruzioni dirette senza esempi,
+                    facendo affidamento sulla conoscenza pre-addestrata del modello riguardo l'ontologia di Wikidata;
+                </li>
+                <li><strong><span>Few-Shot Prompting:</span></strong> Abbiamo guidato il modello fornendo da 2 a 5
+                    esempi di input e output desiderato, stabilendo uno schema coerente per la generazione delle triple;
+                </li>
+                <li><strong><span>Chain-of-Thought (CoT):</span></strong> Abbiamo incoraggiato il modello ad esplicitare
+                    il proprio ragionamento passo dopo passo (es. "Pensiamo passo dopo passo"), prima di produrre il
+                    codice finale. Questa tecnica si è rivelata fondamentale per risolvere ambiguità logiche tra
+                    occupazioni e campi di attività per esempio.</li>
+                <li><strong><span>Few-Shot Chain-of-Thought (FS-CoT):</span></strong> Abbiamo combinato esempi di input
+                    e output con esempi di ragionamento passo dopo passo, mostrando al modello sia come strutturare le
+                    triple RDF sia il processo logico da seguire per ottenerle. Questo approccio ha migliorato la
+                    coerenza delle risposte e la gestione di casi complessi o ambigui.</li>
             </ul>
         </section>
 
         <section>
             <h2>Analisi Comparativa tra Modelli</h2>
-            <p>Il lavoro ha previsto un confronto tra diversi modelli linguistici, come <span><strong><b>GPT-4</b></strong></span> e <span><strong><b>Claude 3.5 Sonnet</b></strong></span>. Questa analisi comparativa ci ha permesso di valutare:</p>
-        
+            <p>Il lavoro ha previsto un confronto tra diversi modelli linguistici, come
+                <span><strong><b>GPT-4</b></strong></span> e <span><strong><b>Claude Sonnet 4.6</b></strong></span>.
+                Questa analisi comparativa ci ha permesso di valutare:
+            </p>
+
             <ul class="styled-list">
-                <li><strong><span>Qualità del codice Turtle:</span></strong> La correttezza sintattica e l'utilizzo dei prefissi corretti (<code>wd:</code>, <code>wdt:</code>);</li>
-                <li><strong><span>Precisione Semantica:</span></strong> La capacità di distinguere tra concetti di fatto abbastanza simili (es. la differenza tra "Occupazione" - <code>P106</code> e "Campo di lavoro" - <code>P101</code>);</li>
-                <li><strong><span>Allucinazioni:</span></strong> La tendenza dei modelli ad inventare identificativi QID o proprietà non esistenti, richiedendo una verifica manuale rigorosa sui risultati prodotti.</li>
+                <li><strong><span>Qualità del codice Turtle:</span></strong> La correttezza sintattica e l'utilizzo dei
+                    prefissi corretti (<code>wd:</code>, <code>wdt:</code>);</li>
+                <li><strong><span>Precisione Semantica:</span></strong> La capacità di distinguere tra concetti di fatto
+                    abbastanza simili (es. la differenza tra "Occupazione" - <code>P106</code> e "Campo di lavoro" -
+                    <code>P101</code>);
+                </li>
+                <li><strong><span>Allucinazioni:</span></strong> La tendenza dei modelli ad inventare identificativi QID
+                    o proprietà non esistenti, richiedendo una verifica manuale rigorosa sui risultati prodotti.</li>
             </ul>
         </section>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Zero-Shot</th>
+                        <th>Few-Shot</th>
+                        <th>Chain-of-Thought</th>
+                        <th>Few-Shot Chain-of-Thought</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="entity">GPT-4</td>
+                        <td>Va diretta al punto, il risultato è corretto ✅</td>
+                        <td>Risposta abbastanza minima, però perfettamente coerente con gli esempi presentati ✅</td>
+                        <td>Produce esattamente ciò che le viene richiesto, né più né meno, ma confonde Cesare Beccaria e Giovanni Beccaria (wd:Q223723) ❌</td>
+                        <td>Risposta pulita, semplice, confode però chimica con filosofia (wd:Q2329) e inventa un identificativo per professoressa di filosofia (wd:Q16222729) ❌</td>
+                    </tr>
+                    <tr>
+                        <td class="entity">Claude Sonnet 4.6</td>
+                        <td>Tripla parzialmente giusta, un identificativo risulta allucinato (wd:Q752596). Autonomamente decide di includere passaggi ulteriori non richiesti, a dei principianti potrebbe confondere ❌</td>
+                        <td>Migliora decisamente le sue prestazioni, fornisce esattamente ciò che era stato richiesto ✅</td>
+                        <td>Output lungo e completo, ma tende ad approfondire autonomamente e presentare esempi non richiesti, confonde Cesare Beccaria e Giovanni Beccaria (wd:Q223723) ❌</td>
+                        <td>Continua ad inserire informazioni aggiuntive, utili per approfondire e capire meglio, ma non richieste. Confode però anche lei chimica con filosofia (wd:Q2329) e inventa un identificativo per professoressa di filosofia (wd:Q16222729) ❌</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </main>
     <footer>
         <div class="container">
@@ -81,4 +136,5 @@
         </div>
     </footer>
 </body>
+
 </html>
