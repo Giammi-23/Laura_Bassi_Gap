@@ -48,111 +48,32 @@
         </div>
     </nav>
 
-    <main class="narrow">
-        <h1>Il Progetto: Dalla Diagnostica alla Conoscenza Strutturata</h1>
-        <p>Come si riflette il divario di genere nei database che governano il web semantico? Il nostro progetto parte
-            da questa domanda macro per indagare il <strong><b>gender gap</b></strong> nei knowledge graph. Abbiamo calato questa sfida nel
-            contesto storico <strong><b>delle docenti dell'Università di Bologna</b></strong>, eleggendo la figura di <strong><b><u>Laura Bassi</u></b></strong> a nucleo
-            centrale della nostra ricerca. Attraverso un audit diagnostico sul grafo di Wikidata, abbiamo misurato la
-            qualità e la ricchezza dei dati esistenti su queste scienziate, con l'obiettivo di far emergere le
-            incompletezze e trasformare la frammentazione della narrazione biografica in conoscenza strutturata, aperta
-            e quantificabile.</p>
+    <header>
+        <h1>L'onor del suo secolo e delle <span>donne</span></h1>
+        <span class="eyebrow"><a href="https://it.wikiquote.org/wiki/Laura_Bassi">
+                    Voltaire
+                </a>, riferendosi a Laura Bassi</span>
+    </header>
 
-        <h2>Query Esplorative Preliminari</h2>
-        <p></p>
-        <div class="query-box">
-            <h3>Query 1: Censimento delle scienziate dell'Alma Mater Studiorum</h3>
-            <p>Prima di procedere all'arricchimento e verifica della qualità, abbiamo interrogato l'endpoint di Wikidata
-                per mappare la presenza delle docenti donne legate all'Università di Bologna. Questa query quindi ha lo
-                scopo di isolare una possibile entità di nostro interesse.</p>
+    <main class="wide">
+        <h1><span>Verso una Memoria Scientifica Strutturata</span></h1>
+        <p>Il nostro progetto ha permesso di analizzare criticamente come il <strong><b>divario di genere</b></strong> e i fenomeni di <strong><b>systemic bias</b></strong> si riflettano anche all'interno dei knowledge graphs che governano il <strong><b>Web Semantico</b></strong>. Attraverso lo studio di Laura Bassi, abbiamo dimostrato che la ricchezza delle fonti biografiche narrative spesso non trova un corrispettivo altrettanto adeguato nella struttura dei Knowledge Graphs globali come Wikidata.</p>
+        
+        <h1><span>Audit e Arricchimento</span></h1>
+        <p>L'indage che abbiamo condotto tramite queries SPARQL sull'endpoint di Wikidata, ha confermato l'esistenza di lacune significative, che abbiamo quindi classificato in quattro gap fondamentali: </p>
+        <ol class="styled-list">
+            <li><strong><b>Sottorappresentazione istituzionale: </b></strong>Il primato storico di Laura Bassi come prima titolare di una cattedra è ridotto ad una generica occupazione, perdendo la valenza ufficiale semantica del ruolo istituzionale;</li>
+            <li><strong><b>Frammentazione dei riconoscimenti: </b></strong>Onoreficenze e intitolazioni risultavano parziali e mal formattate;</li>
+            <li><strong><b>Invisibilità dei network: </b></strong>Le reti di collaborazione scientifica con figure come Volta e Beccarica erano quasi totalmente assenti dal grafo;</li>
+            <li><strong><b>Ambiguità disciplinare: </b></strong>La distinzione tra campi di ricerca e ruoli professionali era spesso confusa, appiattendo quella che erra la poliedricità della scienziata pionera.</li>
+        </ol>
 
-            <div class="code-container">
-                <pre><code>SELECT DISTINCT ?person ?personLabel ?personDescription (COUNT(?prop) AS ?numProprietà)
-WHERE {
-  ?person wdt:P31 wd:Q5 ;         # essere umano
-          wdt:P21 wd:Q6581072 .   # genere: femminile
-  
-  {?person wdt:P108 wd:Q131262}     # datore di lavoro: UNIBO
-  
-  OPTIONAL { ?person ?prop ?value }
-  
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
-}
-GROUP BY ?person ?personLabel ?personDescription
-ORDER BY DESC(?numProprietà)
-LIMIT 100
-</code></pre>
-            </div>
+        <h1><span>Il ruolo degli LLM</span></h1>
+        <p>L'integrazione dei <strong><b>Large Language Models (LLMs)</b></strong> è stata determinante per trasformare testi storici complessi e idee in <strong><b>triple RDF strutturate</b></strong>. Il confronto tra modelli (ChatGPT e Claude) ha evidenziato come diverse strategie di <strong><b>Prompt Engineering</b></strong> (dallo Zero-Shot al Few-Shot Chain-of-Thought) possano guidare l'IA generativa verso risultati quasi accurati. Tuttavia, l'esperienza ha ribadito la necessita di una <strong><b>supervisione umana costante e rigida</b></strong> per correggere allucinazioni negli identificativi e garantire la coerenza storica del dato.</p>
 
-            <p>Abbiamo quindi estratto le entità essere umano, di genere femminile, che hanno come datore di lavoro
-                l'UNIBO, contando il numero di proprietà ad esse associate, limitando e ordinando i primi 100 risultati.
-            </p>
-
-            <div class="query-action">
-                <a href="RisultatiQueryHTML/risultatoQuery1_docentiUnibo.html" class="action-btn-left">
-                    ← Vedi Risultati Salvati
-                </a>
-                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
-                    Esegui Query Service ↗
-                </a>
-            </div>
-        </div>
-
-        <div class="query-box">
-            <h3>Query 2: Identificazione Del Soggetto Centrale - Laura Bassi</h3>
-            <p>Per iniziare il lavoro specifico, abbiamo individuato il nostro soggetto di studi: Laura Bassi. Abbiamo
-                quindi utilizzato una query di ricerca per l'etichetta <code>rdfs:label</code> in lingua italiana per
-                recuperare l'identificativo univoco <code>Q541652</code>.</p>
-
-            <div class="code-container">
-                <pre><code>SELECT DISTINCT ?person ?personLabel ?personDescription
-WHERE {
-  ?person rdfs:label "Laura Bassi"@it .
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
-}
-</code></pre>
-            </div>
-            <div class="query-action">
-                <a href="RisultatiQueryHTML/risultatoQuery2_LauraBassi.html" class="action-btn-left">
-                    ← Vedi Risultati Salvati
-                </a>
-                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
-                    Esegui Query Service ↗
-                </a>
-            </div>
-        </div>
-
-        <h2>I Quattro Gap Informativi Individuati</h2>
-        <p>Il confronto tra i dati strutturati di Wikidata e le fonti testuali (Wikipedia e Archivi Storici UniBo), ha
-            fatto emergere quattro lacune semantiche che il nostro progette intende colmare:</p>
+        <h1><span>Valore Metodologico e Sociale</span></h1>
+        <p>Oltre all'esercizio meramente tecnico, questo lavoro ha un forte valore sociale: dimostra come gli strumenti del Web Semantico possano essere impiegati attivamente per <strong><b>correggere bias</b></strong> e restituire visibilità alle donne che hanno fatto la storia del Mondo. Rendere queste informazioni correttamente machine-readable significa permettere a future ricercatrici e ricercatori e sistemi automatici, di recuperare la memoria di Laura Bassi non solo come un nome, ma come un <strong><b>nodo centrale ed interconnesso</b></strong> della rappresentazione della conoscenza scientifica umana, rappresentazione sempre più equa, esplicita e duratura.</p>
     </main>
-
-    <div class="grid-4">
-        <div class="card">
-            <h2>Gap 1: Status Istituzionale e Primato Storico</h2>
-            <p>Si analizza la mancanza di una proprietà esplicita (come <code>position held</code>) che certifichi il
-                ruolo di Laura Bassi come prima donna in Europa a ottenere una cattedra universitaria ufficiale,
-                informazione attualmente solo "implicita" nel grafo.</p>
-        </div>
-        <div class="card">
-            <h2>Gap 2: Premi, Riconoscimenti e Intitolazioni</h2>
-            <p>Ci si focalizza sulla modellazione incompleta delle numerose onorificenze e dediche (crateri, asteroidi,
-                navi e scuole) che, sebbene presenti nelle fonti biografiche, non risultano strutturate correttamente
-                nelle proprietà di Wikidata.</p>
-        </div>
-        <div class="card">
-            <h2>Gap 3: Invisibilità dei Legami (Mentorship e Network)</h2>
-            <p>Si esplora l'assenza di collegamenti strutturati tra Laura Bassi e la sua rete scientifica (come
-                Alessandro Volta), puntando a far emergere le relazioni di collaborazione e influenza reciproca spesso
-                invisibili nel grafo.</p>
-        </div>
-        <div class="card">
-            <h2>Gap 4: Campo di Attività e Specificità Professionale</h2>
-            <p>Si affronta la confusione semantica tra discipline generiche (fisica, biologia) e i ruoli professionali
-                specifici (ricercatrice vs professoressa), cercando di disambiguare come e in quali ambiti specifici la
-                scienziata abbia operato nelle diverse fasi della carriera.</p>
-        </div>
-    </div>
 
     <footer>
         <div class="container">
