@@ -50,11 +50,10 @@
 
     <main class="narrow">
         <h1>Tripla Gap 1: Status Istituzionale e Primato Storico</h1>
-        <p>Il primato storico di Laura Bassi non è modellato come carica istituzionale (P39 — assente), ma
-            semplicemente come occupazione. Abbiamo scoperto poi, l'esistenza di un elemento Q107609509 ("first
-            woman to hold a position") di tipo oggetto Wikidata, non una proprietà!
-            Questo rivela un gap non solo quantitativo (dato mancante) ma strutturale: Wikidata non dispone
-            attualmente di un vocabolario adeguato per rappresentare primati storici di questo tipo!
+        <p> Laura Bassi detiene lo storico primato di essere stata la prima donna al mondo a ottenere una cattedra universitaria. 
+            Tuttavia, su Wikidata, questo fatto è modellato come "occupation" e non come incarico istituzionale. 
+            A livello semantico, l'elemento  "first woman to hold a position" sarebbe stato più corretto, tuttavia, ricordiamo l'errore di identificazione come item e non come property(Q107609509). 
+            
         </p>
 
         <div class="query-box">
@@ -94,7 +93,9 @@
         </div>
 
         <h3><span>Soluzione Tripla RDF</span></h3>
-        <p>Dopo aver analizzato e studiato criticamente gli output generati dagli LLM, abbiamo riscontrato la necessità di intervenire manualmente per correggere alcune allucinazioni semantiche e imprecisioni formali (inclusi ID Wikidata inventati). Sulla base di questa revisione, abbiamo sintetizzato e strutturato la soluzione formale definitiva. Di seguito viene presentata la tripla RDF in formato Turtle che sana il gap strutturale individuato:</p>
+        <p>Dopo aver analizzato e studiato criticamente gli output generati dagli LLM, abbiamo riscontrato la necessità di intervenire manualmente per correggere alcune allucinazioni semantiche relative agli ID dell'entità. 
+            Sulla base di questa revisione, abbiamo sintetizzato e strutturato la soluzione formale definitiva. Ricordiamo qui che Wikidata identifica in maniera errata "first woman to hold a position" (identificato come un elemento e non come proprietà). 
+            Di seguito viene presentata la tripla RDF in formato Turtle che colma il gap strutturale individuato:</p>
         <div class="code-container">
             <pre><code>
                 wd:Q541652 wdt:P39 wd:Q1622272 .
