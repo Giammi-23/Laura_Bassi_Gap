@@ -49,12 +49,12 @@
     </nav>
 
     <main class="narrow">
-        <h1>Il Progetto: Dalla Diagnostica alla Conoscenza Strutturata</h1>
-        <p>Come si riflette il divario di genere nei database che governano il web semantico? Il nostro progetto parte
-            da questa domanda macro per indagare il <strong><b>gender gap</b></strong> nei knowledge graph. Abbiamo calato questa sfida nel
-            contesto storico <strong><b>delle docenti dell'Università di Bologna</b></strong>, eleggendo la figura di <strong><b><u>Laura Bassi</u></b></strong> a nucleo
+        <h1>Il Progetto: dalla Diagnostica alla Conoscenza Strutturata</h1>
+        <p> Il punto di partenza del nostro progetto è questa macro domanda:<i>Come si riflette il divario di genere nei database che governano il web semantico?</i> 
+            L'obiettivo finale è indagare il <strong><b>gender gap</b></strong> nei knowledge graph. Abbiamo circoscritto questa sfida nel
+            contesto storico delle <strong><b> docenti dell'Università di Bologna</b></strong>, scegliendo la figura di <strong><b><u>Laura Bassi</u></b></strong> come nucleo
             centrale della nostra ricerca. Attraverso un audit diagnostico sul grafo di Wikidata, abbiamo misurato la
-            qualità e la ricchezza dei dati esistenti su queste scienziate, con l'obiettivo di far emergere le
+            qualità e la ricchezza dei dati esistenti su queste scienziate, per far emergere le
             incompletezze e trasformare la frammentazione della narrazione biografica in conoscenza strutturata, aperta
             e quantificabile.</p>
 
@@ -63,7 +63,7 @@
         <div class="query-box">
             <h3>Query 1: Censimento delle scienziate dell'Alma Mater Studiorum</h3>
             <p>Prima di procedere all'arricchimento e verifica della qualità, abbiamo interrogato l'endpoint di Wikidata
-                per mappare la presenza delle docenti donne legate all'Università di Bologna. Questa query quindi ha lo
+                per mappare la presenza delle docenti donne legate all'Università di Bologna. Questa query  ha lo
                 scopo di isolare una possibile entità di nostro interesse.</p>
 
             <div class="code-container">
@@ -84,7 +84,7 @@ LIMIT 100
 </code></pre>
             </div>
 
-            <p>Abbiamo quindi estratto le entità essere umano, di genere femminile, che hanno come datore di lavoro
+            <p>Abbiamo  estratto le entità essere umano, di genere femminile, che hanno come datore di lavoro
                 l'UNIBO, contando il numero di proprietà ad esse associate, limitando e ordinando i primi 100 risultati.
             </p>
 
@@ -130,19 +130,19 @@ WHERE {
     <div class="grid-4">
         <div class="card">
             <h2>Gap 1: Status Istituzionale e Primato Storico</h2>
-            <p>Si analizza la mancanza di una proprietà esplicita (come <code>position held</code>) che certifichi il
+            <p>Si analizza la mancanza di una proprietà esplicita (<code>position held</code>) che attesta il
                 ruolo di Laura Bassi come prima donna in Europa a ottenere una cattedra universitaria ufficiale,
                 informazione attualmente solo "implicita" nel grafo.</p>
         </div>
         <div class="card">
             <h2>Gap 2: Premi, Riconoscimenti e Intitolazioni</h2>
-            <p>Ci si focalizza sulla modellazione incompleta delle numerose onorificenze e dediche (crateri, asteroidi,
-                navi e scuole) che, sebbene presenti nelle fonti biografiche, non risultano strutturate correttamente
+            <p>Il focus è sulla modellazione incompleta delle numerose onorificenze e dediche (cratere, asteroide,
+                nave e istituti scolastici) che, sebbene presenti nelle fonti biografiche, non risultano strutturate correttamente
                 nelle proprietà di Wikidata.</p>
         </div>
         <div class="card">
             <h2>Gap 3: Invisibilità dei Legami (Mentorship e Network)</h2>
-            <p>Si esplora l'assenza di collegamenti strutturati tra Laura Bassi e la sua rete scientifica (come
+            <p>Si esplora l'assenza di collegamenti strutturati tra Laura Bassi e i suoi contatti nella  rete scientifica (come
                 Alessandro Volta), puntando a far emergere le relazioni di collaborazione e influenza reciproca spesso
                 invisibili nel grafo.</p>
         </div>
