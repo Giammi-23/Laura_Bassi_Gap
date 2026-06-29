@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://github.com/Giammi-23/Laura_Bassi_Gap/"
+     xml:base="http://github.com/Giammi-23/Laura_Bassi_Gap/"
+     xmlns:wd="http://www.wikidata.org/entity/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:wdt="http://www.wikidata.org/prop/direct/"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:wdt1="http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:">
+    <owl:Ontology rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap">
+        <owl:versionIRI rdf:resource="https://github.com/Giammi-23/Laura_Bassi_Gap/version1"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdtfieldOfWork -->
+
+    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdtfieldOfWork">
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdtpositionHeld -->
+
+    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdtpositionHeld">
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:P39 -->
+
+    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:P39">
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:fieldOfWork -->
+
+    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:fieldOfWork">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment xml:lang="en">Specialization of a person or organization; see P106 for the occupation</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:namedAfter -->
+
+    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:namedAfter">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment xml:lang="en">Entity or event that inspired the subject&apos;s name, or namesake (in at least one language). Qualifier &quot;applies to name&quot; (P5168) can be used to indicate which one</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:positionHeld -->
+
+    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:positionHeld">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdfs:comment xml:lang="en">Subject currently or formerly holds the object position or public office</rdfs:comment>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:scientificNetworkConnection -->
+
+    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:scientificNetworkConnection">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
+
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty">
+        <rdfs:comment xml:lang="en">Entity or event that inspired the subject&apos;s name, or namesake (in at least one language). Qualifier &quot;applies to name&quot; (P5168) can be used to indicate which one</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q1622272 -->
+
+    <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q1622272">
+        <rdfs:comment xml:lang="en">University Teacher</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q19626332 -->
+
+    <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q19626332">
+        <wdt1:namedAfter rdf:resource="http://www.wikidata.org/entity/Q541652"/>
+        <rdfs:comment xml:lang="it">15742 Laurabassi - Asteroide</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q395 -->
+
+    <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q395">
+        <rdfs:comment xml:lang="en">Mathematics</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q541652 -->
+
+    <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q541652">
+        <wdt1:fieldOfWork rdf:resource="http://www.wikidata.org/entity/Q395"/>
+        <wdt1:fieldOfWork rdf:resource="http://www.wikidata.org/entity/Q5891"/>
+        <wdt1:positionHeld rdf:resource="http://www.wikidata.org/entity/Q1622272"/>
+        <wdt1:scientificNetworkConnection rdf:resource="http://www.wikidata.org/entity/Q680"/>
+        <wdt1:scientificNetworkConnection rdf:resource="http://www.wikidata.org/entity/Q981544"/>
+        <rdfs:comment xml:lang="it">Laura Bassi</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q5891 -->
+
+    <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q5891">
+        <rdfs:comment xml:lang="en">Phylosophy</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q680 -->
+
+    <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q680">
+        <rdfs:comment xml:lang="it">Alessandro Volta</rdfs:comment>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.wikidata.org/entity/Q981544 -->
+
+    <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q981544">
+        <rdfs:comment xml:lang="it">Giovanni Battista Beccaria</rdfs:comment>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
