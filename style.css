@@ -429,7 +429,7 @@ section h2 {
 ul.styled-list, 
 ol.styled-list {
     padding-left: 20px; /* Ricrea il rientro naturale a sinistra */
-    color: #615e5a;
+    color: #1c1b1a;
     font-weight: 200;
 }
 
@@ -451,7 +451,7 @@ ol.styled-list strong {
 .query-box ol.styled-list {
     padding-left: 20px;
     font-size: 0.875rem;
-    color: #615e5a;
+    color: #1c1b1a;
     font-weight: 300;
 }
 
