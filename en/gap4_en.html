@@ -1,0 +1,123 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Anna Bonazza - Gianmarco Rombaldoni - Ludovica Villa">
+    <title>Gap 4 | Laura Bassi Wikidata</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index_en.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index_en.html">Homepage</a>
+                <a href="project_en.html">The Project</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Identified Gaps ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1_en.html">Gap 1</a>
+                            <a href="gap2_en.html">Gap 2</a>
+                            <a href="gap3_en.html">Gap 3</a>
+                            <a href="gap4_en.html" class="active">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="prompting_en.html" class="dropbtn">Prompting Techniques ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="tripla1_en.html">Gap 1 Triple</a>
+                            <a href="tripla2_en.html">Gap 2 Triple</a>
+                            <a href="tripla3_en.html">Gap 3 Triple</a>
+                            <a href="tripla4_en.html">Gap 4 Triple</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="conclusioni_en.html">Conclusions</a>
+                <div class="divider">
+                </div>
+                <div class="lang-switch">
+                    <a href="../gap4.html">IT</a>
+                    <span class="active-lang">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="narrow">
+        <h1>Gap 4: Fields of Activity and Professional Specificity</h1>
+        <p>This gap concerns the specializations and professional activities that Laura carried out throughout her academic
+            career.
+            For our analysis, we focused on two properties: "field of work" and "occupation".</p>
+
+        <div class="query-box">
+            <h2><span>"field of work"</span></h2>
+            <p>This query is used to map the academic disciplines currently linked to Laura Bassi.</p>
+
+            <div class="code-container">
+                <pre><code>SELECT DISTINCT ?field ?fieldLabel WHERE {
+
+wd:Q541652 p:P101 ?statement .
+  ?statement ps:P101 ?field .
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
+}
+</code></pre>
+            </div>
+            <div class="query-action">
+                <a href="../RisultatiQueryHTML/risultatoQuery7_fieldOfWork.html" class="action-btn-left">
+                    ← View Saved Results
+                </a>
+                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
+                    Run Query Service ↗
+                </a>
+            </div>
+        </div>
+
+        <p>Based on Wikidata structured data, Laura Bassi worked in the fields of anatomy, physics, and biology.
+            However, according to biographical sources, her "field of work" is not limited to these disciplines.
+        </p>
+
+        <div class="query-box">
+            <h2><span>"occupation"</span></h2>
+            <p>This query is used to map what Wikidata currently states about Laura Bassi’s professions.</p>
+
+            <div class="code-container">
+                <pre><code>SELECT DISTINCT ?occupation ?occupationLabel WHERE {
+  
+  wd:Q541652 wdt:P106 ?occupation .
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
+}
+</code></pre>
+            </div>
+            <div class="query-action">
+                <a href="../RisultatiQueryHTML/risultatoQuery8_Occupation.html" class="action-btn-left">
+                    ← View Saved Results
+                </a>
+                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
+                    Run Query Service ↗
+                </a>
+            </div>
+        </div>
+
+        <p>At one point in her life, Laura was a professor of philosophy, but this information is missing in our previous
+            analysis. In fact, philosophy does not appear among the listed academic disciplines. The same applies to
+            mathematics: we know that Laura refined her skills in mathematics, yet this information is also absent from the
+            "field of work" data.
+        </p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="title">Linked Open Data Project — Laura Bassi</p>
+            <p class="desc">© 2026 Anna Bonazza, Ludovica Villa, Gianmarco Rombaldoni. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

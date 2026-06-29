@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Anna Bonazza - Gianmarco Rombaldoni - Ludovica Villa">
+    <title>Conclusions | Laura Bassi Wikidata</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index_en.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index_en.html">Homepage</a>
+                <a href="project_en.html">The Project</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Identified Gaps ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1_en.html">Gap 1</a>
+                            <a href="gap2_en.html">Gap 2</a>
+                            <a href="gap3_en.html">Gap 3</a>
+                            <a href="gap4_en.html">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="prompting_en.html" class="dropbtn">Prompting Techniques ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="tripla1_en.html">Gap 1 Triple</a>
+                            <a href="tripla2_en.html">Gap 2 Triple</a>
+                            <a href="tripla3_en.html">Gap 3 Triple</a>
+                            <a href="tripla4_en.html">Gap 4 Triple</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="conclusioni_en.html" class="active">Conclusions</a>
+                <div class="divider">
+                </div>
+                <div class="lang-switch">
+                    <a href="../conclusioni.html">IT</a>
+                    <span class="active-lang">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <h1>“The Honor of Her Century and of <span>Women</span>”</h1>
+        <span class="eyebrow"><u><a href="https://it.wikiquote.org/wiki/Laura_Bassi">
+                    Voltaire</a></u>, referring to Laura Bassi</span>
+    </header>
+
+    <main class="wide">
+        <h1><span>Towards a Structured Scientific Memory</span></h1>
+        <p>Our project enabled us to critically analyze how the <strong><b>gender gap</b></strong> and phenomena of <strong><b>systemic bias</b></strong> are also reflected within the knowledge graphs that underpin the <strong><b>Semantic Web</b></strong>. Through the study of Laura Bassi, we demonstrated that the richness of narrative biographical sources is often not matched by an equally adequate representation within global Knowledge Graphs such as Wikidata.</p>
+
+        <h1><span>Audit and Enrichment</span></h1>
+        <p>The investigation we conducted through SPARQL queries on the Wikidata endpoint confirmed the existence of significant shortcomings, which we classified into four fundamental gaps:</p>
+        <ol class="styled-list">
+            <li><strong><b>Institutional underrepresentation:</b></strong> Laura Bassi's historical achievement as the first holder of a university chair is reduced to a generic occupation, losing the official semantic significance of her institutional role;</li>
+            <li><strong><b>Fragmentation of recognitions:</b></strong> Honors and dedications were incomplete and poorly formatted;</li>
+            <li><strong><b>Invisible scientific networks:</b></strong> Scientific collaboration networks with figures such as Volta and Beccaria were almost entirely absent from the graph;</li>
+            <li><strong><b>Disciplinary ambiguity:</b></strong> The distinction between research fields and professional roles was often blurred, flattening the multidimensional profile of this pioneering scientist.</li>
+        </ol>
+        <p>We developed a Knowledge Graph enrichment proposal using Protégé, available at the following <span><u><a href="https://github.com/Giammi-23/Laura_Bassi_Gap/blob/main/triple.ttl">link</a></u></span>.</p>
+
+        <h1><span>The Role of LLMs</span></h1>
+        <p>The integration of <strong><b>Large Language Models (LLMs)</b></strong> proved essential for transforming complex historical texts and ideas into <strong><b>structured RDF triples</b></strong>. The comparison between models (ChatGPT and Claude) highlighted how different <strong><b>Prompt Engineering</b></strong> strategies (from Zero-Shot to Few-Shot Chain-of-Thought) can guide generative AI toward highly accurate results. Nevertheless, our experience reaffirmed the need for <strong><b>constant and rigorous human supervision</b></strong> to correct identifier hallucinations and ensure the historical consistency of the data.</p>
+
+        <h1><span>Methodological and Social Value</span></h1>
+        <p>Beyond being a purely technical exercise, this work carries strong social value: it demonstrates how Semantic Web technologies can be actively employed to <strong><b>address bias</b></strong> and restore visibility to the women who shaped the history of science. Making this information properly machine-readable means enabling future researchers and automated systems to preserve Laura Bassi's legacy not merely as a name, but as a <strong><b>central and interconnected node</b></strong> within the representation of human scientific knowledge—a representation that is increasingly fair, explicit, and enduring.</p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="title">Linked Open Data Project — Laura Bassi</p>
+            <p class="desc">© 2026 Anna Bonazza, Ludovica Villa, Gianmarco Rombaldoni. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

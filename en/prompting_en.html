@@ -1,0 +1,120 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompting Techniques | Laura Bassi Wikidata</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index_en.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index_en.html">Homepage</a>
+                <a href="project_en.html">The Project</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Identified Gaps ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1_en.html">Gap 1</a>
+                            <a href="gap2_en.html">Gap 2</a>
+                            <a href="gap3_en.html">Gap 3</a>
+                            <a href="gap4_en.html">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="prompting_en.html" class="active" class="dropbtn">Prompting Techniques ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="tripla1_en.html">Gap 1 Triple</a>
+                            <a href="tripla2_en.html">Gap 2 Triple</a>
+                            <a href="tripla3_en.html">Gap 3 Triple</a>
+                            <a href="tripla4_en.html">Gap 4 Triple</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="conclusioni_en.html">Conclusions</a>
+                <div class="divider">
+                </div>
+                <div class="lang-switch">
+                    <a href="../index.html">IT</a>
+                    <span class="active-lang">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="narrow">
+        <h1>Semantic Enrichment through Large Language Models (LLMs)</h1>
+        <p>In this phase of the project, we moved away from the SPARQL CONSTRUCT approach to delegate the generation
+            of new knowledge to <b><strong><span>Large Language Models</span></strong></b>. The goal was to act as prompt engineering experts to instruct the AI to extract information from biographical sources and translate it into the formal language of the <b><strong>Semantic Web</strong></b>: the <b><strong>Turtle</strong></b> format.
+        </p>
+
+        <section>
+            <h2><span>Methodology and Prompting Strategies</span></h2>
+            <p>To ensure the accuracy of results, we applied three different prompting techniques, testing the model’s reasoning ability across increasing levels of complexity:</p>
+
+            <ul class="styled-list">
+                <li><strong><span>Zero-Shot Prompting:</span></strong> We provided direct instructions without examples, relying on the model’s pre-trained knowledge of the Wikidata ontology;</li>
+                <li><strong><span>Few-Shot Prompting:</span></strong> We guided the model by providing 2 to 5 input-output examples, establishing a consistent schema for triple generation;</li>
+                <li><strong><span>Chain-of-Thought (CoT):</span></strong> We encouraged the model to explicitly show its step-by-step reasoning (e.g., “Let’s think step by step”) before producing the final code. This technique proved essential for resolving logical ambiguities between occupations and fields of activity, for example.</li>
+                <li><strong><span>Few-Shot Chain-of-Thought (FS-CoT):</span></strong> We combined input-output examples with step-by-step reasoning examples, showing the model both how to structure RDF triples and the logical process to derive them. This approach improved response consistency and handling of complex or ambiguous cases.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2><span>Comparative Analysis of Models</span></h2>
+            <p>The work included a comparison between different language models, such as
+                <span><strong><b>GPT-4</b></strong></span> and <span><strong><b>Claude Sonnet 4.6</b></strong></span>.
+                This comparative analysis allowed us to evaluate:
+            </p>
+
+            <ul class="styled-list">
+                <li><strong><span>Turtle code quality:</span></strong> Syntactic correctness and use of proper prefixes (<code>wd:</code>, <code>wdt:</code>);</li>
+                <li><strong><span>Semantic accuracy:</span></strong> The ability to distinguish between closely related concepts (e.g., the difference between "Occupation" - <code>P106</code> and "Field of work" - <code>P101</code>);</li>
+                <li><strong><span>Hallucinations:</span></strong> The tendency of models to invent QIDs or non-existent properties, requiring strict manual verification of outputs.</li>
+            </ul>
+        </section>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Zero-Shot</th>
+                        <th>Few-Shot</th>
+                        <th>Chain-of-Thought</th>
+                        <th>Few-Shot Chain-of-Thought</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="entity">GPT-4</td>
+                        <td>Gets straight to the point, result is correct ✅</td>
+                        <td>Fairly minimal response, but perfectly consistent with the provided examples ✅</td>
+                        <td>Produces exactly what is requested, no more and no less, but confuses Cesare Beccaria with Giovanni Beccaria (wd:Q223723) ❌</td>
+                        <td>Clean and simple response, but confuses chemistry with philosophy (wd:Q2329) and invents an identifier for a philosophy professor (wd:Q16222729) ❌</td>
+                    </tr>
+                    <tr>
+                        <td class="entity">Claude Sonnet 4.6</td>
+                        <td>Partially correct triple, but one identifier is hallucinated (wd:Q752596). It also adds extra steps not requested, which may confuse beginners ❌</td>
+                        <td>Performance improves significantly, produces exactly what was requested ✅</td>
+                        <td>Long and complete output, but tends to over-explain and include unrequested examples, also confuses Cesare Beccaria with Giovanni Beccaria (wd:Q223723) ❌</td>
+                        <td>Still includes additional information, useful for understanding but not requested. It also confuses chemistry with philosophy (wd:Q2329) and invents an identifier for a philosophy professor (wd:Q16222729) ❌</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <p class="title">Linked Open Data Project — Laura Bassi</p>
+            <p class="desc">© 2026 Anna Bonazza, Ludovica Villa, Gianmarco Rombaldoni. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

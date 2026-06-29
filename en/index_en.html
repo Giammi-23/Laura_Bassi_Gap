@@ -3,20 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Anna Bonazza - Gianmarco Rombaldoni - Ludovica Villa">
     <title>Laura Bassi | Wikidata Project</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css">
 </head>
+
 <body>
     <nav>
         <div class="nav-container">
             <a href="index_en.html" class="logo serif">Laura Bassi <span>.</span></a>
             <div class="nav-links">
-                <a href="index_en.html" class="active">Home</a>
+                <a href="index_en.html" class="active">Homepage</a>
                 <a href="project_en.html">The Project</a>
-                <a href="sparql_en.html">SPARQL Queries</a>
-                <div class="divider"></div>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Identified Gaps ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1_en.html">Gap 1</a>
+                            <a href="gap2_en.html">Gap 2</a>
+                            <a href="gap3_en.html">Gap 3</a>
+                            <a href="gap4_en.html">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="prompting_en.html" class="dropbtn">Prompting Techniques ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="tripla1_en.html">Gap 1 Triple</a>
+                            <a href="tripla2_en.html">Gap 2 Triple</a>
+                            <a href="tripla3_en.html">Gap 3 Triple</a>
+                            <a href="tripla4_en.html">Gap 4 Triple</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="conclusioni_en.html">Conclusions</a>
+                <div class="divider">
+                </div>
                 <div class="lang-switch">
-                    <a href="index.html">IT</a>
+                    <a href="../index.html">IT</a>
                     <span class="active-lang">EN</span>
                 </div>
             </div>
@@ -26,22 +51,35 @@
     <header>
         <span class="eyebrow">A Scientific Legacy in Linked Open Data</span>
         <h1>Mapping the Life of <span>Laura Bassi</span> on Wikidata</h1>
-        <p>The first woman in the world to secure an official university chair. This project reorganizes, enriches, and reconnects data tied to her historical figure (Q105968).</p>
+        <p><b><strong>The first woman in the world</strong></b> to obtain an official university chair. This project reorganizes,
+            enriches, and interconnects the data related to her historical figure (Q541652).</p>
         <div class="cta-buttons">
-            <a href="project_en.html" class="btn-primary">Explore the Project</a>
-            <a href="https://www.wikidata.org/wiki/Q105968" target="_blank" class="btn-secondary">Wikidata Item ↗</a>
+            <a href="project.html" class="btn-primary">Explore the Project</a>
+            <a href="https://www.wikidata.org/wiki/Q541652" target="_blank" class="btn-secondary">Wikidata Item
+                ↗</a>
         </div>
     </header>
 
     <main class="wide">
-        <div class="grid-2">
+        <div class="grid-3">
+            <div class="image-content">
+                <img src="../images/ritrattoLauraBassi.png" alt="Portrait of Laura Bassi" class="portrait-img">
+            </div>
             <div class="text-content">
-                <h2>The Profile of a Pioneer</h2>
-                <p>Laura Bassi (Bologna, 1711 - 1778) was an Italian physicist, among the most critical intellectual figures of 18th-century Europe. She was the second woman to receive a degree in Europe and the first to officially teach at a university.</p>
-                <p>Through semantic data modeling on Wikidata, the goal is to make her academic relationships, correspondence network, and the locations of her scientific activity in Bologna fully navigable.</p>
+                <h2>A Pioneer of Science</h2>
+                <p>Laura Bassi (Bologna, 1711 - 1778) was an Italian physicist and one of the most important intellectual
+                    figures of the European Enlightenment. She was the second woman in Europe to earn a university degree
+                    and the first to officially teach at a university.</p>
+                <p>The University of Bologna boasts a centuries-old tradition of female excellence, with pioneers such as
+                    <strong>Laura Bassi</strong>, the first woman in the world to obtain an official university chair.
+                    However, despite their historical importance, these figures often remain <strong>"invisible" or
+                        poorly structured</strong> within major global Knowledge Graphs such as Wikidata.</p>
+                <p>Through a methodology that combines the rigor of the <strong>Semantic Web</strong> with the power of
+                    <strong>Large Language Models (LLMs)</strong>, our project aims to fill four specific
+                    information gaps.</p>
             </div>
             <div class="card">
-                <h3 class="serif">Key Metadata (Wikidata)</h3>
+                <h3 class="serif">Key Data (Wikidata)</h3>
                 <dl>
                     <div class="dl-row">
                         <dt>Full name</dt>
@@ -49,17 +87,104 @@
                     </div>
                     <div class="dl-row">
                         <dt>Identifier</dt>
-                        <dd class="mono">Q105968</dd>
+                        <dd class="mono">Q541652</dd>
                     </div>
                     <div class="dl-row">
-                        <dt>Institution</dt>
+                        <dt>Affiliated institution</dt>
                         <dd>University of Bologna</dd>
                     </div>
                     <div class="dl-row">
                         <dt>Fields of activity</dt>
-                        <dd>Experimental physics, Natural philosophy</dd>
+                        <dd>Experimental Physics, Natural Philosophy, Biology, Anatomy, Mathematics</dd>
                     </div>
                 </dl>
+            </div>
+        </div>
+
+        <div class="grid-2">
+            <div class="grid-2-block">
+                <h2 class="serif">The Team</h2>
+                <div class="team-list">
+                    <div class="team-member">
+                        <div class="member-avatar">AB</div>
+                        <div class="member-info">
+                            <span class="member-name">Anna Bonazza</span>
+                            <span class="member-role">1165595</span>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">GR</div>
+                        <div class="member-info">
+                            <span class="member-name">Gianmarco Rombaldoni</span>
+                            <span class="member-role">1180017</span>
+                        </div>
+                    </div>
+                    <div class="team-member">
+                        <div class="member-avatar">LV</div>
+                        <div class="member-info">
+                            <span class="member-name">Ludovica Villa</span>
+                            <span class="member-role">1178483</span>
+                        </div>
+                    </div>
+                </div>
+
+                <h2></h2>
+
+                <h2 class="serif">Visit Our GitHub Repository:</h2>
+                <a href="https://github.com/Giammi-23/Laura_Bassi_Gap"><span><u>Let's Go!</u></span></a>
+            </div>
+            <div class="grid-2-block">
+                <h2 class="serif">Tools Used</h2>
+                <div class="tools-list">
+                    <div class="tool-item">
+                        <a href="https://www.wikidata.org/wiki/Wikidata:Main_Page"><span>Wikidata</span></a>
+                        <span class="tool-desc">Knowledge graph & linked open data</span>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://it.wikipedia.org/wiki/Pagina_principale"><span>Wikipedia</span></a>
+                        <span class="tool-desc">Documentation and biography of Laura Bassi</span>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://www.unibo.it/it/ateneo/chi-siamo/la-nostra-storia/alumni-e-personaggi-celebri/laura-bassi"><span>UniBo Historical Archive</span></a>
+                        <span class="tool-desc">Documentation and biography of Laura Bassi</span>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://query.wikidata.org/"><span>Wikidata Query Service</span></a>
+                        <span class="tool-desc">Querying Wikidata SPARQL endpoints</span>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://it.wikipedia.org/wiki/Modello_linguistico_di_grandi_dimensioni"><span>ChatGPT/Claude/Gemini</span></a>
+                        <span class="tool-desc">Triple generation and validation</span>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://workspace.google.com/intl/it/products/docs/"><span>Google Docs</span></a>
+                        <span class="tool-desc">Collaborative drafting of preliminary documents</span>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://www.overleaf.com/project"><span>Overleaf</span></a>
+                        <span class="tool-desc">Writing the final report in LaTeX</span>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://it.wikipedia.org/wiki/Microsoft_PowerPoint"><span>Microsoft PowerPoint</span></a>
+                        <span class="tool-desc">Creating presentation slides</span>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://github.com/Giammi-23/Laura_Bassi_Gap"><span>GitHub</span></a>
+                        <span class="tool-desc">Shared repository for files and version control</span>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://www.microsoft.com/it-it/microsoft-teams/log-in"><span>Microsoft Teams</span></a>
+                        <span class="tool-desc">Team coordination and video meetings</span>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://protege.stanford.edu/"><span>Protégé</span></a>
+                        <span class="tool-desc">Modeling and local extension of the OWL ontology</span>
+                    </div>
+                    <div class="tool-item">
+                        <a href="https://code.visualstudio.com/"><span>Visual Studio Code</span></a>
+                        <span class="tool-desc">Website development and editing</span>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -67,8 +192,9 @@
     <footer>
         <div class="container">
             <p class="title">Linked Open Data Project — Laura Bassi</p>
-            <p class="desc">Created for scientific dissemination and open data purposes. Dataset released under CC0 Public Domain.</p>
+            <p class="desc">© 2026 Anna Bonazza, Ludovica Villa, Gianmarco Rombaldoni. All rights reserved.</p>
         </div>
     </footer>
 </body>
+
 </html>

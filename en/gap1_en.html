@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Anna Bonazza - Gianmarco Rombaldoni - Ludovica Villa">
+    <title>Gap 1 | Laura Bassi Wikidata</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index_en.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index_en.html">Homepage</a>
+                <a href="project_en.html">The Project</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Identified Gaps ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1_en.html" class="active">Gap 1</a>
+                            <a href="gap2_en.html">Gap 2</a>
+                            <a href="gap3_en.html">Gap 3</a>
+                            <a href="gap4_en.html">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="prompting_en.html" class="dropbtn">Prompting Techniques ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="tripla1_en.html">Gap 1 Triple</a>
+                            <a href="tripla2_en.html">Gap 2 Triple</a>
+                            <a href="tripla3_en.html">Gap 3 Triple</a>
+                            <a href="tripla4_en.html">Gap 4 Triple</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="conclusioni_en.html">Conclusions</a>
+                <div class="divider">
+                </div>
+                <div class="lang-switch">
+                    <a href="../gap1.html">IT</a>
+                    <span class="active-lang">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="narrow">
+        <h1>Gap 1: Institutional Status and Historical Primacy</h1>
+        <p>Laura Bassi was the first woman in Europe to obtain an official academic position in Physics
+            at the University of Bologna. However, on Wikidata this fact is not modeled as an explicit property but is
+            only “implicit” in the combination of:</p>
+        <ul class="styled-list">
+            <li>"occupation" (P106) = physicist</li>
+            <li>"employer" (P108) = University of Bologna</li>
+        </ul>
+        <p></p>
+        <p>The property “position held” (P39) is not used, even though it would explicitly represent the institutional office
+            assigned to her by official decree, strengthening the semantic representation of her historical achievement.</p>
+        <p>The semantic gap lies precisely here: although biographical sources emphasize Laura
+            Bassi's pioneering role as the first woman in Europe to hold a university chair in Physics, this information
+            is not explicitly modeled in the knowledge graph as a structured relationship, but instead remains implicit
+            through the combination of occupation and academic affiliation.
+        </p>
+
+        <div class="query-box">
+            <h2><span>"Occupation" vs. "Position held"</span></h2>
+            <p>Laura Bassi's historical achievement is not modeled as an institutional office (P39 — missing), but
+                simply as an occupation. We also discovered the existence of item Q107609509 ("first
+                woman to hold a position"), which is a Wikidata item rather than a property.
+                This reveals not only a quantitative gap (missing data), but also a structural one:
+                Wikidata currently lacks an appropriate vocabulary for representing historical firsts of this kind.
+            </p>
+
+            <div class="code-container">
+                <pre><code>SELECT DISTINCT ?person ?personLabel ?occupation ?occupationLabel 
+                ?position ?positionLabel
+WHERE {
+  VALUES ?person { wd:Q541652 } # The ?person variable is strictly Laura Bassi
+  
+  OPTIONAL { wd:Q541652 wdt:P106 ?occupation }     # occupation
+  OPTIONAL { wd:Q541652 wdt:P39 ?position }        # position held
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
+}
+</code></pre>
+            </div>
+            <div class="query-action">
+                <a href="../RisultatiQueryHTML/risultatoQuery3_Occ&Pos..html" class="action-btn-left">
+                    ← View Query Result
+                </a>
+                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
+                    Run Query Service ↗
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="title">Linked Open Data Project — Laura Bassi</p>
+            <p class="desc">© 2026 Anna Bonazza, Ludovica Villa, Gianmarco Rombaldoni. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

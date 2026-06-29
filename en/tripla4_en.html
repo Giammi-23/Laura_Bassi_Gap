@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triple 4 | Laura Bassi Wikidata</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index_en.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index_en.html">Homepage</a>
+                <a href="project_en.html">The Project</a>
+
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Identified Gaps ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1_en.html">Gap 1</a>
+                            <a href="gap2_en.html">Gap 2</a>
+                            <a href="gap3_en.html">Gap 3</a>
+                            <a href="gap4_en.html">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <a href="prompting_en.html" class="dropbtn">Prompting Techniques ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="tripla1_en.html">Triple Gap 1</a>
+                            <a href="tripla2_en.html">Triple Gap 2</a>
+                            <a href="tripla3_en.html">Triple Gap 3</a>
+                            <a href="tripla4_en.html" class="active">Triple Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="conclusioni_en.html">Conclusions</a>
+
+                <div class="divider"></div>
+
+                <div class="lang-switch">
+                    <a href="../tripla4.html">IT</a>
+                    <span class="active-lang">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="narrow">
+        <h1>Triple Gap 4: Field of Activity and Professional Specificity</h1>
+
+        <p>
+            This gap concerns the specializations and professional activities that Laura carried out during her academic career.
+            For our exploration, we focused on two properties: “field of work” and “occupation”.
+        </p>
+
+        <div class="query-box">
+            <h2><span>Few-Shot Chain-of-Thought</span></h2>
+
+            <p>
+                <i>
+                You are an expert in Semantic Web and Wikidata. Your task is to extract information from the given text
+                and model it as RDF triples (Turtle format) centered on Laura Bassi (wd:Q541652). You must map the information
+                using specifically the following Wikidata properties:
+                </i>
+            </p>
+
+            <ul class="styled-list">
+                <li><i>wdt:P101 (field of work)</i></li>
+                <li><i>wdt:P106 (occupation)</i></li>
+            </ul>
+
+            <p><i>
+                Use Chain-of-Thought reasoning following this schema for each triple:
+            </i></p>
+
+            <ol class="styled-list">
+                <li><i>Text analysis: identify the concept</i></li>
+                <li><i>Predicate identification: decide whether it is Field of Work (P101) or Occupation (P106)</i></li>
+                <li><i>Object identification: find the correct Wikidata QID</i></li>
+                <li><i>Final triple</i></li>
+            </ol>
+
+            <p><i>Here are two reference examples (Few-Shot):</i></p>
+
+            <p><i>Example 1:</i></p>
+            <p><i>Text: "Marie Curie (wd:Q7186) worked in the field of chemistry."</i></p>
+            <p><i>Reasoning:</i></p>
+            <ol class="styled-list">
+                <li><i>Text analysis: it refers to her area of work (chemistry).</i></li>
+                <li><i>Predicate: Field of work → wdt:P101.</i></li>
+                <li><i>Object: chemistry → wd:Q2329.</i></li>
+            </ol>
+            <p><i>Triple:</i></p>
+            <p><i><code>wd:Q7186 wdt:P101 wd:Q2329 .</code></i></p>
+
+            <p><i>Example 2:</i></p>
+            <p><i>Text: "Albert Einstein (wd:Q937) worked as a theoretical physicist."</i></p>
+            <p><i>Reasoning:</i></p>
+            <ol class="styled-list">
+                <li><i>Text analysis: it refers to his occupation.</i></li>
+                <li><i>Predicate: Occupation → wdt:P106.</i></li>
+                <li><i>Object: physicist → wd:Q169470.</i></li>
+            </ol>
+            <p><i>Triple:</i></p>
+            <p><i><code>wd:Q937 wdt:P106 wd:Q169470 .</code></i></p>
+
+            <p><i>Now apply the same method to the following text:</i></p>
+
+            <p><i>
+                "Laura Bassi (wd:Q541652) was a key figure in the history of science. She devoted her life to research
+                in the fields of physics (wd:Q413) and mathematics (wd:Q395). Thanks to her achievements, she obtained
+                official roles working as a physicist (wd:Q169470), mathematician (wd:Q170790), and philosophy professor
+                (wd:Q16222729) at the University of Bologna."
+            </i></p>
+
+            <h3><span>GPT-4</span></h3>
+            <div class="image-content">
+                <img src="../images/few_cot_chatgpt1.png" alt="GPT-4 result">
+            </div>
+            <div class="image-content">
+                <img src="../images/few_cot_chatgpt2.png" alt="GPT-4 result">
+            </div>
+            <div class="image-content">
+                <img src="../images/few_cot_chatgpt3.png" alt="GPT-4 result">
+            </div>
+
+            <h3><span>Claude Sonnet 4.6</span></h3>
+            <div class="image-content">
+                <img src="../images/few_cot_claude1.png" alt="Claude result">
+            </div>
+            <div class="image-content">
+                <img src="../images/few_cot_claude2.png" alt="Claude result">
+            </div>
+            <div class="image-content">
+                <img src="../images/few_cot_claude3.png" alt="Claude result">
+            </div>
+            <div class="image-content">
+                <img src="../images/few_cot_claude4.png" alt="Claude result">
+            </div>
+        </div>
+
+        <h3><span>Final RDF Triple Solution</span></h3>
+
+        <p>
+            To solve Gap 4, which concerned the semantic confusion between professional occupation and scientific field of activity,
+            we applied the Few-Shot Chain-of-Thought technique. This methodology allowed us to instruct the LLM to distinguish
+            between “what Laura Bassi did as a profession” and “the subject areas of her research.”
+            In this case as well, our work did not end with automatic generation, but continued with human supervision and validation
+            to ensure data quality:
+        </p>
+
+        <div class="code-container">
+            <pre><code>
+:Laura_Bassi :fieldOfWork :philosophy 
+wd:Q541652 wdt:P101 wd:Q5891 .
+
+:Laura_Bassi :fieldOfWork :mathematics 
+wd:Q541652 wdt:P101 wd:Q395 .
+            </code></pre>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="title">Linked Open Data Project — Laura Bassi</p>
+            <p class="desc">© 2026 Anna Bonazza, Ludovica Villa, Gianmarco Rombaldoni. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

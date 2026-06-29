@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Anna Bonazza - Gianmarco Rombaldoni - Ludovica Villa">
+    <title>The Project | Laura Bassi Wikidata</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index_en.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index_en.html">Homepage</a>
+                <a href="project_en.html" class="active">The Project</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Identified Gaps ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1_en.html">Gap 1</a>
+                            <a href="gap2_en.html">Gap 2</a>
+                            <a href="gap3_en.html">Gap 3</a>
+                            <a href="gap4_en.html">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="prompting_en.html" class="dropbtn">Prompting Techniques ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="tripla1_en.html">Gap 1 Triple</a>
+                            <a href="tripla2_en.html">Gap 2 Triple</a>
+                            <a href="tripla3_en.html">Gap 3 Triple</a>
+                            <a href="tripla4_en.html">Gap 4 Triple</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="conclusioni_en.html">Conclusions</a>
+                <div class="divider">
+                </div>
+                <div class="lang-switch">
+                    <a href="../index.html">IT</a>
+                    <span class="active-lang">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="narrow">
+        <h1>The Project: from Diagnosis to Structured Knowledge</h1>
+        <p>The starting point of our project is the following macro-question: <i>How does the gender gap reflect itself in the databases that power the Semantic Web?</i>
+        The final goal is to investigate the <strong><b>gender gap</b></strong> within knowledge graphs. We framed this challenge in the historical context of the <strong><b>female professors of the University of Bologna</b></strong>, choosing the figure of <strong><b><u>Laura Bassi</u></b></strong> as the central focus of our research. Through a diagnostic audit of the Wikidata graph, we measured the quality and richness of existing data about these scientists, in order to highlight incompleteness and transform fragmented biographical narratives into structured, open, and quantifiable knowledge.</p>
+
+        <h2><span>Preliminary Exploratory Queries</span></h2>
+
+        <div class="query-box">
+            <h3>Query 1: Census of female scientists at Alma Mater Studiorum</h3>
+            <p>Before proceeding with enrichment and quality assessment, we queried the Wikidata endpoint
+                to map the presence of female professors linked to the University of Bologna. This query aims to isolate potential entities of interest.</p>
+
+            <div class="code-container">
+                <pre><code>SELECT DISTINCT ?person ?personLabel ?personDescription (COUNT(?prop) AS ?numProprietà)
+WHERE {
+  ?person wdt:P31 wd:Q5 ;         # human being
+          wdt:P21 wd:Q6581072 .   # gender: female
+  
+  {?person wdt:P108 wd:Q131262}     # employer: UNIBO
+  
+  OPTIONAL { ?person ?prop ?value }
+  
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
+}
+GROUP BY ?person ?personLabel ?personDescription
+ORDER BY DESC(?numProprietà)
+LIMIT 100
+</code></pre>
+            </div>
+
+            <p>We extracted human entities of female gender with the University of Bologna as employer, counting the number of properties associated with them, and limiting and ordering the first 100 results.</p>
+
+            <div class="query-action">
+                <a href="../RisultatiQueryHTML/risultatoQuery1_docentiUnibo.html" class="action-btn-left">
+                    ← View Saved Results
+                </a>
+                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
+                    Run Query Service ↗
+                </a>
+            </div>
+        </div>
+
+        <div class="query-box">
+            <h3>Query 2: Identification of the central subject – Laura Bassi</h3>
+            <p>To begin the specific work, we identified our main subject of study: Laura Bassi. We therefore used a label search query (<code>rdfs:label</code>) in Italian to retrieve the unique identifier <code>Q541652</code>.</p>
+
+            <div class="code-container">
+                <pre><code>SELECT DISTINCT ?person ?personLabel ?personDescription
+WHERE {
+  ?person rdfs:label "Laura Bassi"@it .
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "it,en". }
+}
+</code></pre>
+            </div>
+
+            <div class="query-action">
+                <a href="../RisultatiQueryHTML/risultatoQuery2_LauraBassi.html" class="action-btn-left">
+                    ← View Saved Results
+                </a>
+                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
+                    Run Query Service ↗
+                </a>
+            </div>
+        </div>
+
+        <h2><span>The Four Identified Information Gaps</span></h2>
+        <p>The comparison between structured Wikidata data and textual sources (Wikipedia and UniBo Historical Archives) revealed four semantic gaps that our project aims to address:</p>
+    </main>
+
+    <div class="grid-4">
+        <div class="card">
+            <h2>Gap 1: Institutional Status and Historical Primacy</h2>
+            <p>This gap concerns the absence of an explicit property (<code>position held</code>) that attests to Laura Bassi’s role as the first woman in Europe to obtain an official university chair, currently only “implicit” in the graph.</p>
+        </div>
+        <div class="card">
+            <h2>Gap 2: Awards, Honors, and Named Entities</h2>
+            <p>This focuses on the incomplete modeling of numerous honors and dedications (craters, asteroids, ships, and institutions), which, although present in biographical sources, are not properly structured in Wikidata properties.</p>
+        </div>
+        <div class="card">
+            <h2>Gap 3: Invisible Connections (Mentorship and Network)</h2>
+            <p>This explores the lack of structured links between Laura Bassi and her scientific network (such as Alessandro Volta), aiming to surface collaborations and mutual influence often invisible in the graph.</p>
+        </div>
+        <div class="card">
+            <h2>Gap 4: Fields of Activity and Professional Specificity</h2>
+            <p>This addresses the semantic confusion between general disciplines (physics, biology) and specific professional roles (researcher vs professor), aiming to disambiguate the areas in which she operated throughout her career.</p>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p class="title">Linked Open Data Project — Laura Bassi</p>
+            <p class="desc">© 2026 Anna Bonazza, Ludovica Villa, Gianmarco Rombaldoni. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

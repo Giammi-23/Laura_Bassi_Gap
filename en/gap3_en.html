@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Anna Bonazza - Gianmarco Rombaldoni - Ludovica Villa">
+    <title>Gap 3 | Laura Bassi Wikidata</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index_en.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index_en.html">Homepage</a>
+                <a href="project_en.html">The Project</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Identified Gaps ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1_en.html">Gap 1</a>
+                            <a href="gap2_en.html">Gap 2</a>
+                            <a href="gap3_en.html" class="active">Gap 3</a>
+                            <a href="gap4_en.html">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="prompting_en.html" class="dropbtn">Prompting Techniques ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="tripla1_en.html">Gap 1 Triple</a>
+                            <a href="tripla2_en.html">Gap 2 Triple</a>
+                            <a href="tripla3_en.html">Gap 3 Triple</a>
+                            <a href="tripla4_en.html">Gap 4 Triple</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="conclusioni_en.html">Conclusions</a>
+                <div class="divider">
+                </div>
+                <div class="lang-switch">
+                    <a href="../gap3.html">IT</a>
+                    <span class="active-lang">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="narrow">
+        <h1>Gap 3: Invisible Connections (Mentorship and Scientific Networks)</h1>
+        <p>Biographical sources on Laura Bassi reveal a particularly significant network of scientific relationships.
+            Bassi collaborated with Giovanni Battista Beccaria on studies of electricity, maintained contact with
+            Alessandro Volta, and taught her cousin, Lazzaro Spallanzani.</p>
+        <p>Our objective was therefore to verify whether these relationships were correctly represented
+            within the knowledge graph.</p>
+
+        <div class="query-box">
+            <h2><span>Verification of Academic Relationships</span></h2>
+            <p>The only result returned is the “student” (P802) relationship with Lazzaro Spallanzani,
+                which is therefore correctly modeled. The other relationships, however, do not appear at all.</p>
+
+            <div class="code-container">
+                <pre><code>SELECT ?person ?personLabel ?property ?propertyLabel WHERE {
+  VALUES ?person { wd:Q680 wd:Q981544 wd:Q213351}  # Volta, Beccaria, Spallanzani
+  
+  wd:Q541652 ?p ?person .
+  ?property wikibase:directClaim ?p .
+
+  SERVICE wikibase:label {
+    bd:serviceParam wikibase:language "it,en".
+  }
+}
+</code></pre>
+            </div>
+            <div class="query-action">
+                <a href="../RisultatiQueryHTML/risultatoQuery6_Spallanzani.html" class="action-btn-left">
+                    ← View Query Result
+                </a>
+                <a href="https://query.wikidata.org/" target="_blank" class="action-btn-right">
+                    Run Query Service ↗
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="title">Linked Open Data Project — Laura Bassi</p>
+            <p class="desc">© 2026 Anna Bonazza, Ludovica Villa, Gianmarco Rombaldoni. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

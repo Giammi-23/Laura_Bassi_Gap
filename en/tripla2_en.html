@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triple 2 | Laura Bassi Wikidata</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index_en.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index_en.html">Homepage</a>
+                <a href="project_en.html">The Project</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Identified Gaps ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1_en.html">Gap 1</a>
+                            <a href="gap2_en.html">Gap 2</a>
+                            <a href="gap3_en.html">Gap 3</a>
+                            <a href="gap4_en.html">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="prompting_en.html" class="dropbtn">Prompting Techniques ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="tripla1_en.html">Gap 1 Triple</a>
+                            <a href="tripla2_en.html" class="active">Gap 2 Triple</a>
+                            <a href="tripla3_en.html">Gap 3 Triple</a>
+                            <a href="tripla4_en.html">Gap 4 Triple</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="conclusioni_en.html">Conclusions</a>
+                <div class="divider">
+                </div>
+                <div class="lang-switch">
+                    <a href="../tripla2.html">IT</a>
+                    <span class="active-lang">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="narrow">
+        <h1>Triple Gap 2: Awards, Honors, and Named Entities</h1>
+        <p>
+            Laura Bassi received several awards and recognitions for her scientific activity. In Wikidata, these are not modeled as a coherent and complete class of "award received" (P166). Running the Gap 2 query, we obtain only 4 results under the "named after" category.
+        </p>
+
+        <div class="query-box">
+            <h2><span>Few-Shot</span></h2>
+            <p>
+                "<i>You are an expert in the Semantic Web and Knowledge Graphs. You are working on a project that
+                uses the Wikidata knowledge graph. Your task is to explore the Wikidata knowledge graph
+                to enrich it and introduce new RDF triples.
+
+                Strictly use Turtle/Wikidata syntax with standard prefixes (wd: for items,
+                wdt: for properties).
+
+                Use these REFERENCE EXAMPLES:</i>
+            </p>
+
+            <ul class="styled-list">
+                <li><i> "In 1930 in Bologna, the Liceo Statale Laura Bassi was founded, a secondary school named after the famous scientist."
+                    Reasoning: The text indicates that the Liceo Statale Laura Bassi (wd:Q52897687) is named after ("named after", property wdt:P138) Laura Bassi (wd:Q541652).
+                </i></li>
+
+                <li><i> "The Bassi crater on the surface of Venus was named in honor of the Italian physicist."
+                    Reasoning: The Bassi crater (wd:15299958) is named after ("named after", property wdt:P138) Laura Bassi (wd:Q541652).
+                </i></li>
+            </ul>
+
+            <p><i>
+                Your task is to analyze the following text, identifying the subject entity, the correct property,
+                and the object entity, and finally return ONLY the corresponding RDF triple.
+
+                Text to analyze: The asteroid 15742 LauraBassi, discovered in 1991,
+                is a main-belt asteroid named in memory of the celebrated 18th-century scientist from Bologna."
+
+                INSTRUCTIONS FOR OUTPUT
+            </i></p>
+
+            <ol class="styled-list">
+                <li><i> Identify the subject entity (use the correct ID for asteroid 15742 Laurabassi, which is wd:Q19626332).</i></li>
+                <li><i> Identify the object entity (Laura Bassi, which is wd:Q541652).</i></li>
+                <li><i> Use the correct property for "named after" (wdt:P138). </i></li>
+            </ol>
+
+            <h3><span>GPT-4</span></h3>
+            <div class="image-content">
+                <img src="../images/few_shot_chatgpt.png" alt="GPT-4 prompt result">
+            </div>
+
+            <h3><span>Claude Sonnet 4.6</span></h3>
+            <div class="image-content">
+                <img src="../images/few_shot_claude.png" alt="Claude Sonnet 4.6 prompt result">
+            </div>
+        </div>
+
+        <h3><span>RDF Triple Solution</span></h3>
+        <p>
+            After analyzing and critically evaluating the outputs generated by LLMs using the Few-Shot technique, we confirmed the models’ accuracy in combining the provided explicit identifiers:
+        </p>
+
+        <div class="code-container">
+            <pre><code>
+wd:Q19626332 wdt:P138 wd:Q541652 .
+:asteroid15742 :named_after :Laura_Bassi
+            </code></pre>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="title">Linked Open Data Project — Laura Bassi</p>
+            <p class="desc">© 2026 Anna Bonazza, Ludovica Villa, Gianmarco Rombaldoni. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

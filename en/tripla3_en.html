@@ -1,0 +1,149 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triple 3 | Laura Bassi Wikidata</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index_en.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index_en.html">Homepage</a>
+                <a href="project_en.html">The Project</a>
+
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Identified Gaps ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1_en.html">Gap 1</a>
+                            <a href="gap2_en.html">Gap 2</a>
+                            <a href="gap3_en.html">Gap 3</a>
+                            <a href="gap4_en.html">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <a href="prompting_en.html" class="dropbtn">Prompting Techniques ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="tripla1_en.html">Triple Gap 1</a>
+                            <a href="tripla2_en.html">Triple Gap 2</a>
+                            <a href="tripla3_en.html" class="active">Triple Gap 3</a>
+                            <a href="tripla4_en.html">Triple Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="conclusioni_en.html">Conclusions</a>
+
+                <div class="divider"></div>
+
+                <div class="lang-switch">
+                    <a href="../tripla3.html">IT</a>
+                    <span class="active-lang">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="narrow">
+        <h1>Triple Gap 3: Invisibility of Relationships (Mentorship and Network)</h1>
+
+        <p>
+            The only relationship we obtain is the “student” relation (P802) with Lazzaro Spallanzani,
+            which is therefore correctly modeled. The other relationships, however, do not appear at all.
+        </p>
+
+        <div class="query-box">
+            <h2><span>Chain-of-Thought (CoT)</span></h2>
+
+            <p>
+                "<i>
+                You are an expert in Semantic Web and Knowledge Graph modeling (specifically Wikidata).
+                Your task is to analyze the provided biographical text, identify historical/scientific relationships
+                between the mentioned figures, and generate RDF triples to fill an information gap in the Knowledge Graph.
+
+                To do so, you must use a Chain-of-Thought approach (step-by-step reasoning). Explicitly follow these steps:
+                </i>
+            </p>
+
+            <ul class="styled-list">
+                <li><i> STEP 1: Entity Identification - Identify the main entities in the text and assign their Wikidata IDs (Laura Bassi → Q541652, Alessandro Volta → Q680, Giovanni Battista Beccaria → Q981544). </i></li>
+                <li><i> STEP 2: Relationship Analysis - Analyze the text passages that describe contact, correspondence, or scientific/intellectual relationships between Laura Bassi and the other scientists. </i></li>
+                <li><i> STEP 3: RDF Generation - Translate the relationship into formal RDF triples, using both a local fictitious ontology (`:significantperson`) and the Wikidata placeholder property `wdt:P3342`. </i></li>
+            </ul>
+
+            <p><i>
+                OUTPUT FORMAT: First provide the section "### Reasoning (Chain of Thought)", then the section
+                "### Generated RDF Triples" inside a Turtle/N-Triples code block.
+
+                IDENTIFIERS CONTEXT:
+            </i></p>
+
+            <ul class="styled-list">
+                <li><i> Laura Bassi: wd:Q541652 or :Laura_Bassi </i></li>
+                <li><i> Alessandro Volta: wd:Q680 or :Alessandro_Volta </i></li>
+                <li><i> Giovanni Battista Beccaria: wd:Q981544 or :Giovanni_Beccaria </i></li>
+                <li><i> Generic scientific network property: :significantperson wdt:P3342 </i></li>
+            </ul>
+
+            <p><i>
+                Laura Bassi was a follower of Newtonian theories and applied them across multiple fields of research,
+                particularly in electrical physics, becoming—alongside her husband—one of the main Italian scholars in the field.
+                She was also in close contact with Giovanni Battista Beccaria and Alessandro Volta.
+            </i></p>
+
+            <h3><span>GPT-4</span></h3>
+            <div class="image-content">
+                <img src="../images/cot_chatgpt.png" alt="GPT-4 prompt result">
+            </div>
+
+            <h3><span>Claude Sonnet 4.6</span></h3>
+            <div class="image-content">
+                <img src="../images/cot_claude1.png" alt="Claude Sonnet 4.6 prompt result">
+            </div>
+            <div class="image-content">
+                <img src="../images/cot_claude2.png" alt="Claude Sonnet 4.6 prompt result">
+            </div>
+            <div class="image-content">
+                <img src="../images/cot_claude3.png" alt="Claude Sonnet 4.6 prompt result">
+            </div>
+            <div class="image-content">
+                <img src="../images/cot_claude4.png" alt="Claude Sonnet 4.6 prompt result">
+            </div>
+        </div>
+
+        <h3><span>RDF Triple Solution</span></h3>
+
+        <p>
+            After analyzing and critically studying the responses generated by the two LLMs using the Chain-of-Thought technique,
+            our team constructed the final solution to fill the gap related to Laura Bassi’s scientific network,
+            always applying a critical validation approach:
+        </p>
+
+        <div class="code-container">
+            <pre><code>
+:Laura_Bassi :scientificNetworkConnection :Alessandro_Volta .
+wd:Q541652 wdt:PXX wd:Q680 .
+
+:Laura_Bassi :scientificNetworkConnection :Giovanni_Beccaria .
+wd:Q541652 wdt:PXX wd:Q223723 .
+            </code></pre>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="title">Linked Open Data Project — Laura Bassi</p>
+            <p class="desc">© 2026 Anna Bonazza, Ludovica Villa, Gianmarco Rombaldoni. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

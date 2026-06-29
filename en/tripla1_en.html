@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Triple 1 | Laura Bassi Wikidata</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index_en.html" class="logo serif">Laura Bassi <span>.</span></a>
+            <div class="nav-links">
+                <a href="index_en.html">Homepage</a>
+                <a href="project_en.html">The Project</a>
+                <div class="dropdown">
+                    <a href="#" class="dropbtn">Identified Gaps ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="gap1_en.html">Gap 1</a>
+                            <a href="gap2_en.html">Gap 2</a>
+                            <a href="gap3_en.html">Gap 3</a>
+                            <a href="gap4_en.html">Gap 4</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <a href="prompting_en.html" class="dropbtn">Prompting Techniques ▾</a>
+                    <div class="dropdown-content">
+                        <div class="dropdown-content-inner">
+                            <a href="tripla1_en.html" class="active">Gap 1 Triple</a>
+                            <a href="tripla2_en.html">Gap 2 Triple</a>
+                            <a href="tripla3_en.html">Gap 3 Triple</a>
+                            <a href="tripla4_en.html">Gap 4 Triple</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="conclusioni_en.html">Conclusions</a>
+                <div class="divider">
+                </div>
+                <div class="lang-switch">
+                    <a href="../tripla1.html">IT</a>
+                    <span class="active-lang">EN</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="narrow">
+        <h1>Triple Gap 1: Institutional Status and Historical Primacy</h1>
+        <p>
+            Laura Bassi holds the historical distinction of being the first woman in the world to obtain a university chair.
+            However, in Wikidata this fact is modeled as an "occupation" rather than an institutional appointment.
+            At a semantic level, the element "first woman to hold a position" would have been more appropriate; however, we note the error of identification as an item rather than a property (Q107609509).
+        </p>
+
+        <div class="query-box">
+            <h2><span>Zero-Shot</span></h2>
+            <p>
+                "<i>Act as an expert in Semantic Web and Knowledge Graphs. You are working on a project that
+                uses the Wikidata knowledge graph. The entity “Laura Bassi” (wd:Q541652) presents a semantic gap.
+                Currently, her 1732 chair at the University of Bologna is described only as “occupation” (wdt:P106),
+                while the structural property “position held” (wdt:P39) is completely missing. This absence prevents the institutional qualification of her role as the first woman to hold a university chair in Europe. Generate RDF triples directly in Turtle format to fill this gap. Map Laura Bassi’s role as “university teacher” (wd:Q1622272) using the correct Wikidata property (wdt:P39). Include the official triple using Wikidata predicates.</i>"
+            </p>
+
+            <h3><span>GPT-4</span></h3>
+            <div class="image-content">
+                <img src="../images/zero_shot_chatgpt.png" alt="GPT-4 prompt result">
+            </div>
+
+            <h3><span>Claude Sonnet 4.6</span></h3>
+            <div class="image-content">
+                <img src="../images/zero_shot_claude.png" alt="Claude Sonnet 4.6 prompt result">
+            </div>
+
+            <code>
+                <p>The code generates two levels of representation, as expected in the Wikidata ontology:</p>
+                <p>Truthy layer (wdt:P39) — the minimal assertion triple used by SPARQL in standard queries. This alone is sufficient to fill the structural gap identified in your analysis.</p>
+                <p>Full reification layer (p:P39 + statement node) — the rich layer that allows the statement to be qualified with four predicates:</p>  
+                <ul class="styled-list">
+                    <li> pq:P580 / pq:P582 — temporally bound the chair (1732–1778) </li>
+                    <li> pq:P108 — links the role to the institution (wd:Q131262, University of Bologna) </li>
+                    <li> pq:P805 — links to the subject of the chair (wd:Q752596, Philosophy chair) </li>
+                </ul>    
+                <p>The statement node ID (wd:Q541652-P39-BASSI-1732) follows the Wikidata convention for synthetic GUIDs; in a real submission it should be replaced with the system-generated GUID. If you also want to include bibliographic sources using prov:wasDerivedFrom, I can extend the block with provenance metadata.</p>
+            </code>
+        </div>
+
+        <h3><span>RDF Triple Solution</span></h3>
+        <p>
+            After analyzing and critically reviewing the outputs generated by LLMs, we identified the need for manual intervention to correct some semantic hallucinations related to entity IDs.
+            Based on this revision, we synthesized and structured the final formal solution.
+            The RDF triple in Turtle format that fills the identified structural gap is presented below:
+        </p>
+
+        <div class="code-container">
+            <pre><code>
+wd:Q541652 wdt:P39 wd:Q1622272 .
+:Laura_Bassi :positionHeld :university_teacher
+            </code></pre>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p class="title">Linked Open Data Project — Laura Bassi</p>
+            <p class="desc">© 2026 Anna Bonazza, Ludovica Villa, Gianmarco Rombaldoni. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+</html>
