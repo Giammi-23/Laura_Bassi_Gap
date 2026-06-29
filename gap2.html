@@ -1,11 +1,13 @@
 <!DOCTYPE HTML>
 <html lang="it">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gap 2 | Laura Bassi Wikidata</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <nav>
         <div class="nav-container">
@@ -48,15 +50,20 @@
 
     <main class="narrow">
         <h1>Gap 2: Premi, Riconoscimenti e Intitolazioni</h1>
-        <p>Esempi pratici di query semantiche per estrarre informazioni strutturate direttamente da Wikidata.</p>
+        <p> Dall'analisi delle fonti biografiche emerge che Laura Bassi è stata oggetto di numerose forme di
+            commemorazione, tra cui l'intitolazione di crateri,
+            asteroidi, navi, istituzioni scientifiche e luoghi pubblici. Attraverso delle query SPARQL volevamo
+            verificare se tali riconoscimenti fossero adeguatamente rappresentati.</p>
 
         <div class="query-box">
             <h2><span>"Award received"</span></h2>
-            <p>Dalle fonti bibliografiche emerge che Laura Bassi ricevette diversi premi e riconoscimenti per la sua attività scientifica. 
-            Tuttavia, su Wikidata, questi non sembrano modellati esclusivamente come una classe coerente e completa di "award received" (P166)</p>
+            <p>Dalle fonti bibliografiche emerge che Laura Bassi ricevette diversi premi e riconoscimenti per la sua
+                attività scientifica.
+                Tuttavia, su Wikidata, questi non sembrano modellati esclusivamente come una classe coerente e completa
+                di "award received". (P166)</p>
 
             <div class="code-container">
-<pre><code>SELECT ?item ?type WHERE {
+                <pre><code>SELECT ?item ?type WHERE {
   {
     ?item wdt:P138 wd:Q541652 .
     BIND("named after" AS ?type)
@@ -89,16 +96,21 @@
         </div>
 
         <p>
-            Le numerose commemorazioni e intitolazioni dedicate a Laura Bassi (il cratere, l'asteroide, la nave, le istituzioni scientifiche e toponomastica) sono presenti nelle fonti biografiche, ma non sono modellate nel knowledge graph correttamente a livello meramente semantico. Risultano infatti essere solo in parte sotto la categoria “named after”, quindi nelle intitolazioni, ma ne appaiono solo 4!
+            Le numerose commemorazioni e intitolazioni dedicate a Laura Bassi sono presenti nelle fonti biografiche, ma
+            non sono modellate nel
+            knowledge graph correttamente a livello semantico. Risultano infatti essere solo in parte sotto la
+            categoria “named after”, quindi nelle intitolazioni, ma ne appaiono solo 4!
         </p>
 
         <div class="query-box">
             <h2><span>"Named after"</span></h2>
             <p>
-                Sulle fonti biografiche di Wikipedia stessa, si possono trovare almeno 7 riconoscimenti, abbiamo quindi provato a verificare di cosa trattassero le entità presenti sul grafo:
+                Sulle fonti biografiche di Wikipedia stessa, si possono trovare almeno 7 riconoscimenti dedicati alla
+                scienziata. Abbiamo quindi
+                provato a verificare di cosa trattassero le entità presenti nel grafo:
             </p>
             <div class="code-container">
-<pre><code>SELECT ?item ?itemLabel WHERE {
+                <pre><code>SELECT ?item ?itemLabel WHERE {
   ?item wdt:P138 wd:Q541652 .
 
   ?item rdfs:label ?itemLabel .
@@ -120,7 +132,10 @@
         </div>
 
         <p>
-            Il risultato è pessimo! Riceviamo come risultato della query solo 4 entità. Di queste, due hanno una label che non sembra essere semanticamente corretta, non è intuitivo né per un umano, né per una macchina, capire che “Bassi” faccia riferimento ad un cratere su Venere, ne tantomeno “Laura Bassi”, essere una nave rompighiaccio.
+            Il risultato è pessimo! Riceviamo come risultato della query solo 4 entità. Di queste, due hanno una label
+            che non sembra essere semanticamente corretta: non è intuitivo né per un umano, né per una macchina, capire
+            che “Bassi” faccia riferimento ad un cratere su Venere, ne tantomeno “Laura Bassi”, essere una nave
+            rompighiaccio.
         </p>
 
     </main>
@@ -132,4 +147,5 @@
         </div>
     </footer>
 </body>
+
 </html>
