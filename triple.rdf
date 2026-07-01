@@ -1,16 +1,15 @@
 <?xml version="1.0"?>
-<rdf:RDF xmlns="http://github.com/Giammi-23/Laura_Bassi_Gap/"
-     xml:base="http://github.com/Giammi-23/Laura_Bassi_Gap/"
+<rdf:RDF xmlns="http://www.semanticweb.org/gianmarco/ontologies/2026/6/untitled-ontology-10/"
+     xml:base="http://www.semanticweb.org/gianmarco/ontologies/2026/6/untitled-ontology-10/"
      xmlns:wd="http://www.wikidata.org/entity/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:wdt="http://www.wikidata.org/prop/direct/"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:wdt1="http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:">
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap">
-        <owl:versionIRI rdf:resource="https://github.com/Giammi-23/Laura_Bassi_Gap/version1"/>
+        <owl:versionIRI rdf:resource="http://github.com/Giammi-23/Laura_Bassi_Gap/version1"/>
     </owl:Ontology>
     
 
@@ -26,71 +25,36 @@
     
 
 
-    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdtfieldOfWork -->
+    <!-- http://www.wikidata.org/prop/direct/fieldOfWork -->
 
-    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdtfieldOfWork">
-        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdtpositionHeld -->
-
-    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdtpositionHeld">
-        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:P39 -->
-
-    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:P39">
-        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:fieldOfWork -->
-
-    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:fieldOfWork">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <owl:ObjectProperty rdf:about="http://www.wikidata.org/prop/direct/fieldOfWork">
         <rdfs:comment xml:lang="en">Specialization of a person or organization; see P106 for the occupation</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:namedAfter -->
+    <!-- http://www.wikidata.org/prop/direct/namedAfter -->
 
-    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:namedAfter">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <owl:ObjectProperty rdf:about="http://www.wikidata.org/prop/direct/namedAfter">
         <rdfs:comment xml:lang="en">Entity or event that inspired the subject&apos;s name, or namesake (in at least one language). Qualifier &quot;applies to name&quot; (P5168) can be used to indicate which one</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:positionHeld -->
+    <!-- http://www.wikidata.org/prop/direct/positionHeld -->
 
-    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:positionHeld">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <owl:ObjectProperty rdf:about="http://www.wikidata.org/prop/direct/positionHeld">
         <rdfs:comment xml:lang="en">Subject currently or formerly holds the object position or public office</rdfs:comment>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:scientificNetworkConnection -->
+    <!-- http://www.wikidata.org/prop/direct/significantPerson -->
 
-    <owl:ObjectProperty rdf:about="http://github.com/Giammi-23/Laura_Bassi_Gap/wdt:scientificNetworkConnection">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    <owl:ObjectProperty rdf:about="http://www.wikidata.org/prop/direct/significantPerson">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdfs:comment xml:lang="en">Person linked to the item in any possible way</rdfs:comment>
     </owl:ObjectProperty>
-    
-
-
-    <!-- http://www.w3.org/2002/07/owl#topObjectProperty -->
-
-    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#topObjectProperty">
-        <rdfs:comment xml:lang="en">Entity or event that inspired the subject&apos;s name, or namesake (in at least one language). Qualifier &quot;applies to name&quot; (P5168) can be used to indicate which one</rdfs:comment>
-    </rdf:Description>
     
 
 
@@ -116,7 +80,7 @@
     <!-- http://www.wikidata.org/entity/Q19626332 -->
 
     <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q19626332">
-        <wdt1:namedAfter rdf:resource="http://www.wikidata.org/entity/Q541652"/>
+        <wdt:namedAfter rdf:resource="http://www.wikidata.org/entity/Q541652"/>
         <rdfs:comment xml:lang="it">15742 Laurabassi - Asteroide</rdfs:comment>
     </owl:NamedIndividual>
     
@@ -133,11 +97,11 @@
     <!-- http://www.wikidata.org/entity/Q541652 -->
 
     <owl:NamedIndividual rdf:about="http://www.wikidata.org/entity/Q541652">
-        <wdt1:fieldOfWork rdf:resource="http://www.wikidata.org/entity/Q395"/>
-        <wdt1:fieldOfWork rdf:resource="http://www.wikidata.org/entity/Q5891"/>
-        <wdt1:positionHeld rdf:resource="http://www.wikidata.org/entity/Q1622272"/>
-        <wdt1:scientificNetworkConnection rdf:resource="http://www.wikidata.org/entity/Q680"/>
-        <wdt1:scientificNetworkConnection rdf:resource="http://www.wikidata.org/entity/Q981544"/>
+        <wdt:fieldOfWork rdf:resource="http://www.wikidata.org/entity/Q395"/>
+        <wdt:fieldOfWork rdf:resource="http://www.wikidata.org/entity/Q5891"/>
+        <wdt:positionHeld rdf:resource="http://www.wikidata.org/entity/Q1622272"/>
+        <wdt:significantPerson rdf:resource="http://www.wikidata.org/entity/Q680"/>
+        <wdt:significantPerson rdf:resource="http://www.wikidata.org/entity/Q981544"/>
         <rdfs:comment xml:lang="it">Laura Bassi</rdfs:comment>
     </owl:NamedIndividual>
     
